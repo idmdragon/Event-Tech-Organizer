@@ -9,3 +9,7 @@ dependencyResolutionManagement {
 rootProject.name = "Event Tech Organizer"
 include ':app'
 include ':data'
+include ':features:authentication'
+include ':features:insight'
+include ':features:event'
+include ':features:profile'

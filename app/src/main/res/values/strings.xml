@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">Event Tech Organizer</string>
+    <string name="title_authentication">Module Authentication</string>
+    <string name="title_insight">Module Insight</string>
+    <string name="title_event">Module Event</string>
+    <string name="title_profile">Module Profile</string>
 </resources>
