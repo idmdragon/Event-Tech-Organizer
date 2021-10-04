@@ -4,4 +4,37 @@
     <string name="title_insight">Module Insight</string>
     <string name="title_event">Module Event</string>
     <string name="title_profile">Module Profile</string>
+    <string name="title_activity_main">MainActivity</string>
+    <string name="title_home">Home</string>
+    <string name="title_dashboard">Dashboard</string>
+    <string name="title_notifications">Notifications</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="cd_logo">logo</string>
+    <string name="title_register">Selamat Datang</string>
+    <string name="title_login">Masuk ke akun Anda</string>
+    <string name="subtitle_register">Publikasi eventmu dan dapatkan peserta sesuai targetmu</string>
+    <string name="subtitle_login">Masuk lagi untuk publikasikan event milikmu sesuai targetmu </string>
+    <string name="hint_username">Nama Pengguna</string>
+    <string name="hint_email">Email</string>
+    <string name="hint_password">Password</string>
+    <string name="sudah_punya_akun">Sudah punya akun? </string>
+    <string name="masuk"> Masuk</string>
+    <string name="login">Masuk</string>
+    <string name="register">Daftar</string>
+    <string name="suggest_register_text">Belum punya akun?  </string>
+    <string name="forgot_password">Lupa password?</string>
+    <color name="mtrl_textinput_default_box_stroke_color">@color/whitegray</color>
+    <string name="cdNotification">tombol notifikasi</string>
+    <string name="title_event_conference">Kategori Event Pertemuan</string>
+    <string name="title_event_popular">Event Terpopuler</string>
+    <string name="cd_category_icon">category icon</string>
+    <string name="see_all">Lihat Semua</string>
+    <string name="cd_event_poster">event poster</string>
+    <string name="button_menu">button menu</string>
+    <string name="title_event_favorite">Event Favorite</string>
+    <string name="cd_back">Back button</string>
+    <string name="title_detail">Module Title</string>
+    <string name="detail_event">Detail Event</string>
+    <string name="title_add_event">Add Event</string>
 </resources>
