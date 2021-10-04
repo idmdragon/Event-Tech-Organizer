@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="title_event_insight">Event Insight</string>
+    <string name="subtitle_total_insight_event">Total Insight Event</string>
+    <string name="subtitle_every_insight_event">Insight Setiap Event</string>
+    <string name="subtitle_total_event_seen">Jumlah total event yang dilihat</string>
+    <string name="subtitle_total_event_opened">Jumlah total link pendaftaran dibuka</string>
+    <string name="subtitle_total_event">Jumlah eventmu</string>
+</resources>

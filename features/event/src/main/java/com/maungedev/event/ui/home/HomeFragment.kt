@@ -24,7 +24,6 @@ class HomeFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View {
         _binding = FragmentHomeBinding.inflate(inflater, container, false)
-
         viewModel.getMyEvent().observe(viewLifecycleOwner, ::setMyEvent)
 
         return binding.root

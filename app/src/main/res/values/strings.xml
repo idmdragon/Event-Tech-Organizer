@@ -1,9 +1,9 @@
 <resources>
     <string name="app_name">Event Tech Organizer</string>
-    <string name="title_authentication">Module Authentication</string>
-    <string name="title_insight">Module Insight</string>
-    <string name="title_event">Module Event</string>
-    <string name="title_profile">Module Profile</string>
+    <string name="title_authentication">Authentication</string>
+    <string name="title_insight">Insight</string>
+    <string name="title_event">Event</string>
+    <string name="title_profile">Profile</string>
     <string name="title_activity_main">MainActivity</string>
     <string name="title_home">Home</string>
     <string name="title_dashboard">Dashboard</string>
@@ -35,5 +35,7 @@
     <string name="cd_back">Back button</string>
     <string name="title_detail">Module Title</string>
     <string name="detail_event">Detail Event</string>
-    <string name="title_add_event">Add Event</string>
+    <string name="title_add_event">Tambahkan Event</string>
+    <string name="subtitle_event_seen">Jumlah event dilihat</string>
+    <string name="subtitle_event_opened">Jumlah link pendaftaran di buka</string>
 </resources>

@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginStart="@dimen/range_24"
+    android:layout_marginEnd="@dimen/range_16"
+    android:layout_marginBottom="@dimen/range_16"
+    android:background="@drawable/rv_item_background">
+
+    <TextView
+        android:id="@+id/tv_event_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/range_16"
+        android:layout_marginTop="@dimen/range_8"
+        android:fontFamily="@font/poppins_medium"
+        android:textColor="@color/blue"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:text="Webinar Hology 3.0" />
+
+    <TextView
+        android:id="@+id/tv_event_category"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/poppins"
+        android:textColor="@color/white"
+        android:textSize="13sp"
+        app:layout_constraintStart_toStartOf="@id/tv_event_title"
+        app:layout_constraintTop_toBottomOf="@id/tv_event_title"
+        tools:text="Kategori: UI/UX" />
+
+    <TextView
+        android:id="@+id/tv_subtitle_number_of_seen"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/poppins"
+        android:textColor="@color/white"
+        android:textSize="@dimen/size_12"
+        android:text="@string/subtitle_event_seen"
+        android:layout_marginTop="@dimen/range_16"
+        app:layout_constraintTop_toBottomOf="@id/tv_event_category"
+        app:layout_constraintStart_toStartOf="@id/tv_event_category"
+        />
+
+    <TextView
+        android:id="@+id/tv_number_of_seen"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="@dimen/size_12"
+        android:textColor="@color/white"
+        android:fontFamily="@font/poppins_medium"
+        android:layout_marginEnd="@dimen/range_12"
+        tools:text="0"
+        app:layout_constraintTop_toTopOf="@id/tv_subtitle_number_of_seen"
+        app:layout_constraintEnd_toEndOf="parent"/>
+    <TextView
+        android:id="@+id/tv_subtitle_number_of_opened"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/poppins"
+        android:textColor="@color/white"
+        android:textSize="@dimen/size_12"
+        android:text="@string/subtitle_event_opened"
+        android:layout_marginTop="@dimen/range_8"
+        android:layout_marginBottom="@dimen/range_12"
+        app:layout_constraintTop_toBottomOf="@id/tv_subtitle_number_of_seen"
+        app:layout_constraintStart_toStartOf="@id/tv_subtitle_number_of_seen"
+        app:layout_constraintBottom_toBottomOf="parent"
+        />
+
+    <TextView
+        android:id="@+id/tv_number_of_opened"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="@dimen/size_12"
+        android:textColor="@color/white"
+        android:fontFamily="@font/poppins_medium"
+        android:layout_marginEnd="@dimen/range_12"
+        tools:text="0"
+        app:layout_constraintTop_toTopOf="@id/tv_subtitle_number_of_opened"
+        app:layout_constraintEnd_toEndOf="parent"/>
+</androidx.constraintlayout.widget.ConstraintLayout>

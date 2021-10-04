@@ -7,5 +7,146 @@
     android:background="@color/black"
     tools:context="com.maungedev.insight.InsightFragment">
 
+    <TextView
+        android:id="@+id/tv_insight_title"
+        style="@style/PoppinsSemiBold"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/range_24"
+        android:layout_marginTop="@dimen/range_16"
+        android:text="@string/title_event_insight"
+        android:textSize="@dimen/size_18"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
+    <TextView
+        android:id="@+id/tv_insight_subtitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/subtitle_total_insight_event"
+        android:textColor="@color/white"
+        android:fontFamily="@font/poppins_medium"
+        android:textSize="@dimen/size_16"
+        app:layout_constraintTop_toBottomOf="@id/tv_insight_title"
+        app:layout_constraintStart_toStartOf="@id/tv_insight_title"
+        android:layout_marginTop="@dimen/range_24"
+        />
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/layout_total_insight_event"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="@id/tv_insight_subtitle"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tv_insight_subtitle"
+        android:layout_marginTop="@dimen/range_8"
+        android:layout_marginEnd="@dimen/range_16"
+        android:background="@drawable/background_profile_text"
+        >
+
+        <TextView
+            android:id="@+id/tv_subtitle_total_seen"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="@dimen/size_12"
+            android:textColor="@color/white"
+            android:fontFamily="@font/poppins"
+            android:text="@string/subtitle_total_event_seen"
+            android:layout_marginStart="@dimen/range_16"
+            android:layout_marginTop="@dimen/range_16"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            />
+
+        <TextView
+            android:id="@+id/tv_total_seen"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="@dimen/size_12"
+            android:textColor="@color/white"
+            android:fontFamily="@font/poppins_medium"
+            android:layout_marginEnd="@dimen/range_12"
+            android:layout_marginTop="@dimen/range_16"
+            tools:text="0"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"/>
+        <TextView
+            android:id="@+id/tv_subtitle_total_opened"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="@dimen/size_12"
+            android:textColor="@color/white"
+            android:fontFamily="@font/poppins"
+            android:text="@string/subtitle_total_event_opened"
+            android:layout_marginStart="@dimen/range_16"
+            android:layout_marginTop="@dimen/range_16"
+            app:layout_constraintTop_toBottomOf="@id/tv_subtitle_total_seen"
+            app:layout_constraintStart_toStartOf="parent"
+            />
+
+        <TextView
+            android:id="@+id/tv_total_opened"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="@dimen/size_12"
+            android:textColor="@color/white"
+            android:fontFamily="@font/poppins_medium"
+            android:layout_marginEnd="@dimen/range_12"
+            tools:text="0"
+            app:layout_constraintTop_toTopOf="@id/tv_subtitle_total_opened"
+            app:layout_constraintEnd_toEndOf="parent"/>
+        <TextView
+            android:id="@+id/tv_subtitle_total_event"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="@dimen/size_12"
+            android:textColor="@color/white"
+            android:fontFamily="@font/poppins"
+            android:text="@string/subtitle_total_event"
+            android:layout_marginStart="@dimen/range_16"
+            android:layout_marginTop="@dimen/range_16"
+            android:layout_marginBottom="@dimen/range_16"
+            app:layout_constraintTop_toBottomOf="@id/tv_subtitle_total_opened"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            />
+
+        <TextView
+            android:id="@+id/tv_total_event"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="@dimen/size_12"
+            android:textColor="@color/white"
+            android:fontFamily="@font/poppins_medium"
+            android:layout_marginEnd="@dimen/range_12"
+            tools:text="0"
+            app:layout_constraintTop_toTopOf="@id/tv_subtitle_total_event"
+            app:layout_constraintEnd_toEndOf="parent"/>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <TextView
+        android:id="@+id/tv_item_insight_event"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/subtitle_every_insight_event"
+        android:textColor="@color/white"
+        android:fontFamily="@font/poppins_medium"
+        android:textSize="@dimen/size_16"
+        app:layout_constraintTop_toBottomOf="@id/layout_total_insight_event"
+        app:layout_constraintStart_toStartOf="@id/layout_total_insight_event"
+        android:layout_marginTop="@dimen/range_24"
+        />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rv_insight"
+        android:layout_width="@dimen/range_0"
+        android:layout_height="@dimen/range_0"
+        android:layout_marginTop="@dimen/range_24"
+        android:paddingBottom="@dimen/range_64"
+        app:layout_constraintTop_toBottomOf="@id/tv_item_insight_event"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        tools:listitem="@layout/item_insight"
+        />
 </androidx.constraintlayout.widget.ConstraintLayout>
