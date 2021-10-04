@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="subtitle_username">Nama Pengguna</string>
+    <string name="subtitle_email">Email</string>
+    <string name="subtitle_edit_account">Ubah Akun</string>
+    <string name="text_edit_username">Ubah Nama Pengguna</string>
+    <string name="text_password">Ubah Password</string>
+    <string name="subtitle_other">Lainnya</string>
+    <string name="text_setting">Pengaturan</string>
+    <string name="text_about">Tentang Aplikasi</string>
+</resources>

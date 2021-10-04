@@ -1,15 +1,221 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/black"
     tools:context="com.maungedev.profile.ProfileFragment">
 
-    <!-- TODO: Update blank fragment layout -->
     <TextView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+        android:id="@+id/tvTitleFavorite"
+        style="@style/PoppinsSemiBold"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/range_24"
+        android:layout_marginTop="@dimen/range_16"
+        android:text="@string/title_profile"
+        android:textSize="@dimen/size_18"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
-</FrameLayout>
+    <TextView
+        android:id="@+id/subtitle_username"
+        style="@style/PoppinsMedium"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/size_16"
+        android:text="@string/subtitle_username"
+        android:textSize="@dimen/size_16"
+        app:layout_constraintStart_toStartOf="@id/tvTitleFavorite"
+        app:layout_constraintTop_toBottomOf="@+id/tvTitleFavorite" />
+
+    <TextView
+        android:id="@+id/tv_username"
+        style="@style/PoppinsReguler"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/range_8"
+        android:layout_marginEnd="@dimen/range_24"
+        android:background="@drawable/background_profile_text"
+        android:paddingStart="@dimen/range_16"
+        android:paddingTop="@dimen/range_16"
+        android:paddingBottom="@dimen/range_8"
+        android:text="Ilham Dwi Muchlison"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/subtitle_username"
+        app:layout_constraintTop_toBottomOf="@+id/subtitle_username"
+        tools:ignore="RtlSymmetry" />
+
+    <TextView
+        android:id="@+id/subtitle_email"
+        style="@style/PoppinsMedium"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/range_16"
+        android:text="@string/subtitle_email"
+        android:textSize="@dimen/size_16"
+        app:layout_constraintStart_toStartOf="@id/tv_username"
+        app:layout_constraintTop_toBottomOf="@+id/tv_username" />
+
+    <TextView
+        android:id="@+id/tv_email"
+        style="@style/PoppinsReguler"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/range_8"
+        android:layout_marginEnd="@dimen/range_24"
+        android:background="@drawable/background_profile_text"
+        android:paddingStart="@dimen/range_16"
+        android:paddingTop="@dimen/range_10"
+        android:paddingBottom="@dimen/range_8"
+        android:text="ilham.uklison@gmail.com"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/subtitle_email"
+        app:layout_constraintTop_toBottomOf="@+id/subtitle_email"
+        tools:ignore="RtlSymmetry" />
+
+    <TextView
+        android:id="@+id/subtitle_edit_account"
+        style="@style/PoppinsMedium"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/range_16"
+        android:text="@string/subtitle_edit_account"
+        android:textSize="@dimen/size_16"
+        app:layout_constraintStart_toStartOf="@id/tv_email"
+        app:layout_constraintTop_toBottomOf="@+id/tv_email" />
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/layout_edit_account"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/range_8"
+        android:layout_marginEnd="@dimen/range_24"
+        android:background="@drawable/background_profile_text"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/subtitle_edit_account"
+        app:layout_constraintTop_toBottomOf="@id/subtitle_edit_account">
+
+        <TextView
+            android:id="@+id/tv_edit_username"
+            style="@style/PoppinsReguler"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:paddingStart="@dimen/range_16"
+            android:paddingTop="@dimen/range_16"
+            android:paddingEnd="@dimen/range_16"
+            android:text="@string/text_edit_username"
+            app:drawableEndCompat="@drawable/ic_next"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <View
+            android:id="@+id/view_border"
+            android:layout_width="@dimen/range_0"
+            android:layout_height="1dp"
+            android:layout_marginHorizontal="@dimen/range_16"
+            android:layout_marginTop="@dimen/range_16"
+            android:background="@color/whitegray"
+            app:layout_constraintEnd_toEndOf="@id/tv_edit_username"
+            app:layout_constraintStart_toStartOf="@id/tv_edit_username"
+            app:layout_constraintTop_toBottomOf="@id/tv_edit_username" />
+
+        <TextView
+            android:id="@+id/tv_edit_password"
+            style="@style/PoppinsReguler"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/range_16"
+            android:paddingStart="@dimen/range_16"
+            android:paddingEnd="@dimen/range_16"
+            android:paddingBottom="@dimen/range_16"
+            android:text="@string/text_password"
+            app:drawableEndCompat="@drawable/ic_next"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/view_border" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <TextView
+        android:id="@+id/subtitle_other"
+        style="@style/PoppinsMedium"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/range_16"
+        android:text="@string/subtitle_other"
+        android:textSize="@dimen/size_16"
+        app:layout_constraintStart_toStartOf="@id/layout_edit_account"
+        app:layout_constraintTop_toBottomOf="@+id/layout_edit_account" />
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/layout_other"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/range_8"
+        android:layout_marginEnd="@dimen/range_24"
+        android:background="@drawable/background_profile_text"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/subtitle_other"
+        app:layout_constraintTop_toBottomOf="@id/subtitle_other">
+
+        <TextView
+            android:id="@+id/tv_setting"
+            style="@style/PoppinsReguler"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:paddingStart="@dimen/range_16"
+            android:paddingTop="@dimen/range_16"
+            android:paddingEnd="@dimen/range_16"
+            android:text="@string/text_setting"
+            app:drawableEndCompat="@drawable/ic_next"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <View
+            android:id="@+id/view_border2"
+            android:layout_width="@dimen/range_0"
+            android:layout_height="1dp"
+            android:layout_marginHorizontal="@dimen/range_16"
+            android:layout_marginTop="@dimen/range_16"
+            android:background="@color/whitegray"
+            app:layout_constraintEnd_toEndOf="@id/tv_setting"
+            app:layout_constraintStart_toStartOf="@id/tv_setting"
+            app:layout_constraintTop_toBottomOf="@id/tv_setting" />
+
+        <TextView
+            android:id="@+id/tv_about"
+            style="@style/PoppinsReguler"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/range_16"
+            android:paddingStart="@dimen/range_16"
+            android:paddingEnd="@dimen/range_16"
+            android:paddingBottom="@dimen/range_16"
+            android:text="@string/text_about"
+            app:drawableEndCompat="@drawable/ic_next"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/view_border2" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <TextView
+        android:id="@+id/tv_logout"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/range_24"
+        android:layout_marginEnd="@dimen/range_24"
+        android:background="@drawable/background_profile_text"
+        android:fontFamily="@font/poppins_medium"
+        android:paddingStart="@dimen/range_16"
+        android:paddingTop="@dimen/range_16"
+        android:paddingBottom="@dimen/range_16"
+        android:text="Keluar"
+        android:textColor="@color/red"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/layout_other"
+        app:layout_constraintTop_toBottomOf="@+id/layout_other"
+        tools:ignore="RtlSymmetry" />
+</androidx.constraintlayout.widget.ConstraintLayout>

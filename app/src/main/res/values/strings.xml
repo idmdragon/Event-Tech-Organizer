@@ -13,7 +13,7 @@
     <string name="cd_logo">logo</string>
     <string name="title_register">Selamat Datang</string>
     <string name="title_login">Masuk ke akun Anda</string>
-    <string name="subtitle_register">Publikasi eventmu dan dapatkan peserta sesuai targetmu</string>
+    <string name="subtitle_register">Publikasi event IT milikmu dan jangkau lebih banyak peserta yang sesuai targetmu</string>
     <string name="subtitle_login">Masuk lagi untuk publikasikan event milikmu sesuai targetmu </string>
     <string name="hint_username">Nama Pengguna</string>
     <string name="hint_email">Email</string>
@@ -26,8 +26,7 @@
     <string name="forgot_password">Lupa password?</string>
     <color name="mtrl_textinput_default_box_stroke_color">@color/whitegray</color>
     <string name="cdNotification">tombol notifikasi</string>
-    <string name="title_event_conference">Kategori Event Pertemuan</string>
-    <string name="title_event_popular">Event Terpopuler</string>
+    <string name="title_page_home">Event Milikmu</string>
     <string name="cd_category_icon">category icon</string>
     <string name="see_all">Lihat Semua</string>
     <string name="cd_event_poster">event poster</string>
