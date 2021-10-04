@@ -1,4 +1,4 @@
-package com.maungedev.eventtechorganizer.main.ui.add_event
+package com.maungedev.insight
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -8,12 +8,12 @@ import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
-import com.maungedev.eventtechorganizer.databinding.FragmentAddEventBinding
+import com.maungedev.insight.databinding.FragmentInsightBinding
 
-class AddEventFragment : Fragment() {
+class InsightFragment : Fragment() {
 
-    private lateinit var addEventViewModel: AddEventViewModel
-    private var _binding: FragmentAddEventBinding? = null
+    private lateinit var insightViewModel: InsightViewModel
+    private var _binding: FragmentInsightBinding? = null
 
     // This property is only valid between onCreateView and
     // onDestroyView.
@@ -24,14 +24,14 @@ class AddEventFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        addEventViewModel =
-            ViewModelProvider(this).get(AddEventViewModel::class.java)
+        insightViewModel =
+            ViewModelProvider(this).get(InsightViewModel::class.java)
 
-        _binding = FragmentAddEventBinding.inflate(inflater, container, false)
+        _binding = FragmentInsightBinding.inflate(inflater, container, false)
         val root: View = binding.root
 
-        val textView: TextView = binding.textNotifications
-        addEventViewModel.text.observe(viewLifecycleOwner, Observer {
+        val textView: TextView = binding.textDashboard
+        insightViewModel.text.observe(viewLifecycleOwner, Observer {
             textView.text = it
         })
         return root

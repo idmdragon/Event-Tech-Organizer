@@ -16,7 +16,7 @@ class SplashActivity : AppCompatActivity() {
         setContentView(R.layout.activity_splash)
 
         Handler(mainLooper).postDelayed({
-            startActivity(Intent(this@SplashActivity, MainActivity::class.java)).also{
+            startActivity(Intent(this@SplashActivity, Class.forName(AUTHENTICATION_PAGE))).also{
                 finishAffinity()
             }
         }, 1000)

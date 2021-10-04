@@ -1,4 +1,4 @@
-package com.maungedev.eventtechorganizer.main.ui.home
+package com.maungedev.event.ui.home
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -8,7 +8,7 @@ import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
-import com.maungedev.eventtechorganizer.databinding.FragmentHomeBinding
+import com.maungedev.event.databinding.FragmentHomeBinding
 
 class HomeFragment : Fragment() {
 

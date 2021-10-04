@@ -7,22 +7,22 @@
 
     <fragment
         android:id="@+id/navigation_add_event"
-        android:name="com.maungedev.eventtechorganizer.main.ui.add_event.AddEventFragment"
+        android:name="com.maungedev.event.ui.add_event.AddEventFragment"
         android:label="fragment_add_event"
         tools:layout="@layout/fragment_add_event" />
     <fragment
         android:id="@+id/navigation_profile"
-        android:name="com.maungedev.eventtechorganizer.main.ui.profile.ProfileFragment"
+        android:name="com.maungedev.profile.ProfileFragment"
         android:label="fragment_profile"
         tools:layout="@layout/fragment_profile" />
     <fragment
         android:id="@+id/navigation_home"
-        android:name="com.maungedev.eventtechorganizer.main.ui.home.HomeFragment"
+        android:name="com.maungedev.event.ui.home.HomeFragment"
         android:label="fragment_home"
         tools:layout="@layout/fragment_home" />
     <fragment
         android:id="@+id/navigation_insight"
-        android:name="com.maungedev.eventtechorganizer.main.ui.insight.InsightFragment"
+        android:name="com.maungedev.insight.InsightFragment"
         android:label="fragment_insight"
         tools:layout="@layout/fragment_insight" />
 

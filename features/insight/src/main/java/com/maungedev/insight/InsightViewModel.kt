@@ -1,4 +1,4 @@
-package com.maungedev.eventtechorganizer.main.ui.insight
+package com.maungedev.insight
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
