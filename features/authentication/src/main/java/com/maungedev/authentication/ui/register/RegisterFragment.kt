@@ -7,16 +7,21 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.core.view.isVisible
+import com.google.android.material.snackbar.Snackbar
 import com.maungedev.authentication.R
 import com.maungedev.authentication.databinding.FragmentRegisterBinding
+import com.maungedev.authentication.di.authModule
 import com.maungedev.authentication.ui.login.LoginFragment
+import com.maungedev.domain.model.User
+import com.maungedev.domain.utils.Resource
 import com.maungedev.eventtechorganizer.main.MainActivity
-
+import org.koin.core.context.loadKoinModules
+import org.koin.android.viewmodel.ext.android.viewModel
 class RegisterFragment : Fragment() {
 
     private var _binding: FragmentRegisterBinding? = null
     private val binding get() = _binding!!
-//    private val viewModel: RegisterViewModel by viewModel()
+    private val viewModel: RegisterViewModel by viewModel()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -28,7 +33,7 @@ class RegisterFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-//        loadKoinModules(authModule)
+        loadKoinModules(authModule)
         with(binding) {
 
             activity.apply {
@@ -41,11 +46,11 @@ class RegisterFragment : Fragment() {
                     startActivity(Intent(requireContext(), MainActivity::class.java)).also {
                         activity?.finish()
                     }
-                 /*   viewModel.signUp(
+                    viewModel.signUp(
                         email,
                         password,
                         createEntityUser(email,username)
-                    ).observe(viewLifecycleOwner,::signUpResponse)*/
+                    ).observe(viewLifecycleOwner,::signUpResponse)
 
                 }
 
@@ -66,13 +71,11 @@ class RegisterFragment : Fragment() {
         }
     }
 
-/*    private fun createEntityUser(email: String, username:String):User{
+   private fun createEntityUser(email: String, username:String):User{
         return User(
             uid = "",
             email = email,
             username = username,
-            favorite = "",
-            schedule = ""
         )
     }
     private fun signUpResponse(resource: Resource<Unit>) {
@@ -94,7 +97,7 @@ class RegisterFragment : Fragment() {
 
         }
 
-    }*/
+    }
 
 
     override fun onDestroy() {

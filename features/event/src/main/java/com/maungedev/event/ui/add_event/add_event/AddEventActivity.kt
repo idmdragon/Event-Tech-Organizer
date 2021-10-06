@@ -26,7 +26,7 @@ class AddEventActivity : AppCompatActivity() {
     private fun addEvent() {
         with(binding){
 
-            val event = Event(
+  /*          val event = Event(
                 "",
                 tilEventName.editText?.text.toString(),
                 intent.getStringExtra(EVENT_TYPE).toString(),
@@ -40,7 +40,7 @@ class AddEventActivity : AppCompatActivity() {
                 tilEventPrerequisite.editText?.text.toString(),
 
             )
-            viewModel.addEvent()
+            viewModel.addEvent()*/
         }
 
     }

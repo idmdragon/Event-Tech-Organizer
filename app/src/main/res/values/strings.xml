@@ -15,7 +15,7 @@
     <string name="title_login">Masuk ke akun Anda</string>
     <string name="subtitle_register">Publikasi event IT milikmu dan jangkau lebih banyak peserta yang sesuai targetmu</string>
     <string name="subtitle_login">Masuk lagi untuk publikasikan event milikmu sesuai targetmu </string>
-    <string name="hint_username">Nama Pengguna</string>
+    <string name="hint_username">Nama Penyelenggara</string>
     <string name="hint_email">Email</string>
     <string name="hint_password">Password</string>
     <string name="sudah_punya_akun">Sudah punya akun? </string>
