@@ -67,7 +67,7 @@
             android:fontFamily="@font/poppins_medium"
             android:layout_marginEnd="@dimen/range_12"
             android:layout_marginTop="@dimen/range_16"
-            tools:text="0"
+            android:text="0"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintEnd_toEndOf="parent"/>
         <TextView
@@ -92,7 +92,7 @@
             android:textColor="@color/white"
             android:fontFamily="@font/poppins_medium"
             android:layout_marginEnd="@dimen/range_12"
-            tools:text="0"
+            android:text="0"
             app:layout_constraintTop_toTopOf="@id/tv_subtitle_total_opened"
             app:layout_constraintEnd_toEndOf="parent"/>
         <TextView
@@ -119,7 +119,7 @@
             android:textColor="@color/white"
             android:fontFamily="@font/poppins_medium"
             android:layout_marginEnd="@dimen/range_12"
-            tools:text="0"
+            android:text="0"
             app:layout_constraintTop_toTopOf="@id/tv_subtitle_total_event"
             app:layout_constraintEnd_toEndOf="parent"/>
     </androidx.constraintlayout.widget.ConstraintLayout>

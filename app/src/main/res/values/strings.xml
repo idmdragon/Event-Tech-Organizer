@@ -29,7 +29,7 @@
     <string name="title_page_home">Event Milikmu</string>
     <string name="cd_category_icon">category icon</string>
     <string name="see_all">Lihat Semua</string>
-    <string name="cd_event_poster">event poster</string>
+    <string name="cd_event_type">event type ilustration</string>
     <string name="button_menu">button menu</string>
     <string name="title_event_favorite">Event Favorite</string>
     <string name="cd_back">Back button</string>
@@ -38,4 +38,5 @@
     <string name="title_add_event">Tambahkan Event</string>
     <string name="subtitle_event_seen">Jumlah event dilihat</string>
     <string name="subtitle_event_opened">Jumlah link pendaftaran di buka</string>
+    <string name="cd_event_poster">Poster event</string>
 </resources>

@@ -4,8 +4,10 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.3355464759959142" />
+        <entry key="app/src/main/res/drawable-v24/ilu_competition.xml" value="0.3223958333333333" />
         <entry key="app/src/main/res/drawable/background_profile_text.xml" value="0.3421875" />
         <entry key="app/src/main/res/drawable/ic_add_event.xml" value="0.3355464759959142" />
+        <entry key="app/src/main/res/drawable/ic_back_button.xml" value="0.3421875" />
         <entry key="app/src/main/res/drawable/ic_conf.xml" value="0.3355464759959142" />
         <entry key="app/src/main/res/drawable/ic_dashboard_black_24dp.xml" value="0.3355464759959142" />
         <entry key="app/src/main/res/drawable/ic_event_conf_active.xml" value="0.3355464759959142" />
@@ -34,8 +36,12 @@
         <entry key="features/authentication/src/main/res/layout/activity_auth.xml" value="0.21693840579710144" />
         <entry key="features/authentication/src/main/res/layout/fragment_login.xml" value="0.25" />
         <entry key="features/authentication/src/main/res/layout/fragment_register.xml" value="0.33" />
+        <entry key="features/event/src/main/res/drawable/background_add_event.xml" value="0.14583333333333334" />
+        <entry key="features/event/src/main/res/drawable/ilu_competition.xml" value="0.18958333333333333" />
+        <entry key="features/event/src/main/res/drawable/ilu_conference.xml" value="0.18958333333333333" />
         <entry key="features/event/src/main/res/layout/a.xml" value="0.2609375" />
-        <entry key="features/event/src/main/res/layout/fragment_add_event.xml" value="0.2609375" />
+        <entry key="features/event/src/main/res/layout/activity_add_event.xml" value="0.249185667752443" />
+        <entry key="features/event/src/main/res/layout/fragment_add_event.xml" value="0.33" />
         <entry key="features/event/src/main/res/layout/fragment_home.xml" value="0.33" />
         <entry key="features/insight/src/main/res/layout/a.xml" value="0.3020833333333333" />
         <entry key="features/insight/src/main/res/layout/fragment_insight.xml" value="0.5" />

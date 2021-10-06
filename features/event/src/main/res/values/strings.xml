@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="type_conference">Conference</string>
+    <string name="type_competition">Competition</string>
+    <string name="desc_conference">Conference merupakan event yang berbentuk pertemuan seperti workshop, seminar maupun webinar.</string>
+    <string name="desc_competition">Competition merupakan event yang berkaitan dengan perlombaan yang ada pada bidang Teknologi.</string>
+</resources>

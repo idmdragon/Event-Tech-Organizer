@@ -1,0 +1,149 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/black"
+    tools:context="com.maungedev.event.ui.add_event.choose_event.ChooseEventFragment">
+
+    <TextView
+        android:id="@+id/tv_insight_title"
+        style="@style/PoppinsSemiBold"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/range_24"
+        android:layout_marginTop="@dimen/range_16"
+        android:text="@string/title_add_event"
+        android:textSize="@dimen/size_18"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/layout_conference"
+        android:layout_width="@dimen/range_0"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/range_32"
+        android:layout_marginTop="@dimen/range_32"
+        android:layout_marginEnd="@dimen/range_32"
+        android:background="@drawable/background_add_event"
+        app:cardCornerRadius="@dimen/range_6"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv_insight_title">
+
+        <ImageView
+            android:id="@+id/iv_ilus_conference"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/range_16"
+            android:layout_marginTop="@dimen/range_16"
+            android:contentDescription="@string/cd_event_type"
+            android:src="@drawable/ilu_conference"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/tv_title_conference"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/range_16"
+            android:fontFamily="@font/poppins_semibold"
+            android:text="@string/type_conference"
+            android:textColor="@color/white"
+            app:layout_constraintStart_toEndOf="@+id/iv_ilus_conference"
+            app:layout_constraintTop_toTopOf="@+id/iv_ilus_conference" />
+
+        <Button
+            android:id="@+id/btn_add_conference"
+            style="@style/ButtonStyle16"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Tambah Event"
+            android:textSize="@dimen/size_14"
+            app:layout_constraintStart_toStartOf="@id/tv_title_conference"
+            app:layout_constraintTop_toBottomOf="@id/tv_title_conference" />
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/range_8"
+            android:layout_marginEnd="@dimen/range_16"
+            android:layout_marginStart="@dimen/range_16"
+            android:layout_marginBottom="@dimen/range_16"
+            android:fontFamily="@font/poppins"
+            android:text="@string/desc_conference"
+            android:textColor="@color/white"
+            android:textSize="@dimen/size_14"
+            android:layout_gravity="center_vertical|end"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/iv_ilus_conference" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/layout_competition"
+        android:layout_width="@dimen/range_0"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/range_32"
+        android:layout_marginTop="48dp"
+        android:layout_marginEnd="@dimen/range_32"
+        android:background="@drawable/background_add_event"
+        app:cardCornerRadius="@dimen/range_6"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/layout_conference">
+
+        <ImageView
+            android:id="@+id/iv_ilus_competition"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/range_16"
+            android:layout_marginTop="@dimen/range_16"
+            android:src="@drawable/ilu_competition"
+            android:contentDescription="@string/cd_event_type"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/tv_title_competition"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/range_16"
+            android:fontFamily="@font/poppins_semibold"
+            android:text="@string/type_competition"
+            android:textColor="@color/white"
+
+            app:layout_constraintStart_toEndOf="@+id/iv_ilus_competition"
+            app:layout_constraintTop_toTopOf="@+id/iv_ilus_competition" />
+
+        <Button
+            android:id="@+id/btn_add_competition"
+            style="@style/ButtonStyle16"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Tambah Event"
+            android:textSize="@dimen/size_14"
+            app:layout_constraintStart_toStartOf="@id/tv_title_competition"
+            app:layout_constraintTop_toBottomOf="@id/tv_title_competition" />
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/range_8"
+            android:layout_marginEnd="@dimen/range_16"
+            android:layout_marginBottom="@dimen/range_16"
+            android:layout_marginStart="@dimen/range_16"
+            android:fontFamily="@font/poppins"
+            android:text="@string/desc_competition"
+            android:textColor="@color/white"
+            android:textSize="@dimen/size_14"
+            android:gravity="fill_horizontal"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/iv_ilus_competition" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,5 +1,5 @@
 package com.maungedev.eventtechorganizer.constant
 
 object ExtraNameConstant {
-    const val EVENT_CATEGORY = "event_category"
+    const val EVENT_TYPE = "event_type"
 }

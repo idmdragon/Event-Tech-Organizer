@@ -5,7 +5,7 @@ data class Event(
     val eventName: String,
     val eventType: String,
     val eventCategory: String,
-    val price: Int,
+    val price: Long,
     val date: String,
     val time: String,
     val location: String,
