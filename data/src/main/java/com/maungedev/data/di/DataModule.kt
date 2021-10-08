@@ -2,11 +2,14 @@ package com.maungedev.data.di
 
 import androidx.room.Room
 import com.maungedev.data.repository.AuthRepositoryImpl
+import com.maungedev.data.repository.EventITRepositoryImpl
 import com.maungedev.data.source.local.EventTechDatabase
 import com.maungedev.data.source.local.LocalDataSource
 import com.maungedev.data.source.remote.RemoteDataSource
 import com.maungedev.data.source.remote.service.AuthService
+import com.maungedev.data.source.remote.service.EventService
 import com.maungedev.domain.repository.AuthRepository
+import com.maungedev.domain.repository.EventITRepository
 import org.koin.android.ext.koin.androidContext
 import org.koin.dsl.module
 
@@ -22,25 +25,34 @@ val databaseModule = module {
     factory {
         get<EventTechDatabase>().userDao()
     }
+    factory {
+        get<EventTechDatabase>().eventDao()
+    }
 }
 
 val serviceModule = module {
     factory {
         AuthService()
     }
+    factory {
+        EventService()
+    }
 }
 
 val dataSourceModule = module {
     single {
-        LocalDataSource(get())
+        LocalDataSource(get(),get())
     }
     single {
-        RemoteDataSource(get())
+        RemoteDataSource(get(),get())
     }
 }
 
 val repositoryModule = module {
     single<AuthRepository>{
         AuthRepositoryImpl(get(),get())
+    }
+    single<EventITRepository>{
+        EventITRepositoryImpl(get(),get())
     }
 }

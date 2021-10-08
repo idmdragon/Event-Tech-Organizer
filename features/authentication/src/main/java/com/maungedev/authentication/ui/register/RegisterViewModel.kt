@@ -1,6 +1,5 @@
 package com.maungedev.authentication.ui.register
 
-
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.asLiveData
 import com.maungedev.domain.model.User

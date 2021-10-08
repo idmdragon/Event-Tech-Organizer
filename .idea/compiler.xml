@@ -1,13 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="CompilerConfiguration">
-    <bytecodeTargetLevel target="1.8">
-      <module name="Event_Tech_Organizer.app" target="11" />
-      <module name="Event_Tech_Organizer.data" target="11" />
-      <module name="Event_Tech_Organizer.features.authentication" target="11" />
-      <module name="Event_Tech_Organizer.features.event" target="11" />
-      <module name="Event_Tech_Organizer.features.insight" target="11" />
-      <module name="Event_Tech_Organizer.features.profile" target="11" />
-    </bytecodeTargetLevel>
+    <bytecodeTargetLevel target="11" />
   </component>
 </project>

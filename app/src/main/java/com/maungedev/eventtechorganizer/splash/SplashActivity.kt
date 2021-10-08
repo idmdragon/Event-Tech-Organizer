@@ -5,6 +5,8 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.Handler
+import com.google.firebase.auth.ktx.auth
+import com.google.firebase.ktx.Firebase
 import com.maungedev.eventtechorganizer.R
 import com.maungedev.eventtechorganizer.constant.PageNameConstant.AUTHENTICATION_PAGE
 import com.maungedev.eventtechorganizer.main.MainActivity
@@ -15,10 +17,26 @@ class SplashActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_splash)
 
+
+
         Handler(mainLooper).postDelayed({
-            startActivity(Intent(this@SplashActivity, Class.forName(AUTHENTICATION_PAGE))).also{
-                finishAffinity()
+            if(isUserAlreadyHere()){
+                startActivity(Intent(this@SplashActivity, MainActivity::class.java)).also {
+                    finishAffinity()
+                }
+            }else{
+                startActivity(Intent(this@SplashActivity, Class.forName(AUTHENTICATION_PAGE))).also {
+                    finishAffinity()
+                }
+
             }
         }, 1000)
+    }
+    fun isUserAlreadyHere():Boolean {
+        val auth = Firebase.auth
+        if(auth.currentUser?.uid!=null){
+            return true
+        }
+        return false
     }
 }
