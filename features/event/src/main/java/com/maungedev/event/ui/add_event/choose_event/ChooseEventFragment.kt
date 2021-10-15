@@ -6,9 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.ViewModelProvider
 import com.maungedev.event.databinding.FragmentChooseEventBinding
-import com.maungedev.event.ui.add_event.add_event.AddEventViewModel
 import com.maungedev.eventtechorganizer.constant.ExtraNameConstant.EVENT_COMPETITION
 import com.maungedev.eventtechorganizer.constant.ExtraNameConstant.EVENT_CONFERENCE
 import com.maungedev.eventtechorganizer.constant.ExtraNameConstant.EVENT_TYPE

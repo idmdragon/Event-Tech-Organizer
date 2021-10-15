@@ -21,5 +21,6 @@ fun EventResponse.toEntity(): EventEntity =
         numbersOfView,
         numbersOfRegistrationClick,
         favoriteBy,
-        organizer
+        organizer,
+        organizerUid
     )

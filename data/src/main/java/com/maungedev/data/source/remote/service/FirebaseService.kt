@@ -135,4 +135,20 @@ abstract class FirebaseService {
                 emit(FirebaseResponse.Error(e.toString()))
             }
         }.flowOn(Dispatchers.IO)
+
+    inline fun <reified ResponseType>getCollection(collection: String):Flow<FirebaseResponse<List<ResponseType>>> =
+        flow{
+            val result = firestore
+                .collection(collection)
+                .get()
+                .await()
+
+            if (result.isEmpty){
+                emit(FirebaseResponse.Empty)
+            }else{
+                emit(FirebaseResponse.Success(result.toObjects(ResponseType::class.java)))
+            }
+        }.catch {
+            emit(FirebaseResponse.Error(it.message.toString()))
+        }.flowOn(Dispatchers.IO)
 }

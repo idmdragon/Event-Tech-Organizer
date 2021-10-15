@@ -17,6 +17,7 @@ import com.maungedev.domain.utils.Resource
 import com.maungedev.eventtechorganizer.main.MainActivity
 import org.koin.core.context.loadKoinModules
 import org.koin.android.viewmodel.ext.android.viewModel
+import org.koin.core.context.unloadKoinModules
 
 class LoginFragment : Fragment() {
 
@@ -92,6 +93,11 @@ class LoginFragment : Fragment() {
             progressBar.isVisible = state
             btnLogin.isEnabled = !state
         }
+    }
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        unloadKoinModules(authModule)
     }
 
 }

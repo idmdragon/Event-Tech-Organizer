@@ -7,7 +7,7 @@
     <string name="title_add_event">Buat Event</string>
     <string name="hint_event_name">Nama Event</string>
     <string name="hint_category_event">Kategori Event</string>
-    <string name="hint_cost">Biaya Masuk</string>
+    <string name="hint_cost">Biaya Masuk (Rp)</string>
     <string name="hint_date">Tanggal Event</string>
     <string name="hint_event_time">Waktu Event</string>
     <string name="hint_location">Lokasi Event</string>

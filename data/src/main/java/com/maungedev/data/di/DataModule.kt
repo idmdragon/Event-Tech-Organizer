@@ -8,6 +8,7 @@ import com.maungedev.data.source.local.LocalDataSource
 import com.maungedev.data.source.remote.RemoteDataSource
 import com.maungedev.data.source.remote.service.AuthService
 import com.maungedev.data.source.remote.service.EventService
+import com.maungedev.data.source.remote.service.UserService
 import com.maungedev.domain.repository.AuthRepository
 import com.maungedev.domain.repository.EventITRepository
 import org.koin.android.ext.koin.androidContext
@@ -37,6 +38,9 @@ val serviceModule = module {
     factory {
         EventService()
     }
+    factory {
+        UserService()
+    }
 }
 
 val dataSourceModule = module {
@@ -44,7 +48,7 @@ val dataSourceModule = module {
         LocalDataSource(get(),get())
     }
     single {
-        RemoteDataSource(get(),get())
+        RemoteDataSource(get(),get(),get())
     }
 }
 

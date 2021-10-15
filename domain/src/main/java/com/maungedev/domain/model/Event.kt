@@ -16,6 +16,7 @@ data class Event(
     val numbersOfView: Int,
     val numbersOfRegistrationClick: Int,
     var favoriteBy: List<String>?,
-    val organizer: String
+    val organizer: String,
+    val organizerUid: String
 ) {
 }

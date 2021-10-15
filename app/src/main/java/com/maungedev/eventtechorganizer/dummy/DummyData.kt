@@ -25,6 +25,7 @@ object DummyData {
                 2,
                 null,
                 "HMIF"
+            ,""
             )
         )
 
@@ -45,7 +46,8 @@ object DummyData {
                 2,
                 2,
                 null,
-                "UB"
+                "UB",
+                "UB",
             )
         )
         listData.add(
@@ -65,7 +67,8 @@ object DummyData {
                 2,
                 2,
                 null,
-                "UB"
+                "UB",
+                "UB",
             )
         )
         listData.add(
@@ -85,7 +88,8 @@ object DummyData {
                 2,
                 2,
                 null,
-                "TEKKOM UB"
+                "TEKKOM UB",
+                "TEKKOM UB",
             )
         )
         listData.add(
@@ -105,7 +109,8 @@ object DummyData {
                 2,
                 2,
                 null,
-                "Dicoding ID"
+                "Dicoding ID",
+                "Dicoding ID",
             )
         )
         listData.add(
@@ -125,7 +130,8 @@ object DummyData {
                 2,
                 2,
                 null,
-                "Dicoding ID"
+                "Dicoding ID",
+                "Dicoding ID",
             )
         )
         listData.add(
@@ -145,7 +151,8 @@ object DummyData {
                 2,
                 2,
                 null,
-                "Dicoding ID"
+                "Dicoding ID",
+                "Dicoding ID",
             )
         )
         listData.add(
@@ -165,7 +172,8 @@ object DummyData {
                 2,
                 2,
                 null,
-                "Dicoding ID"
+                "Dicoding ID",
+                "Dicoding ID",
             )
         )
 

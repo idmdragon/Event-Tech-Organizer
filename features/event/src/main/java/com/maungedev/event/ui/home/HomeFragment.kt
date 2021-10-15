@@ -10,7 +10,6 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.maungedev.domain.model.Event
 import com.maungedev.event.databinding.FragmentHomeBinding
 import com.maungedev.eventtechorganizer.adapter.EventLayoutAdapter
-
 class HomeFragment : Fragment() {
 
     private val viewModel: HomeViewModel by activityViewModels()

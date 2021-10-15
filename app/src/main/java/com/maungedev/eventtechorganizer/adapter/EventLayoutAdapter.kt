@@ -31,6 +31,7 @@ class EventLayoutAdapter(private val context: Context) :
 
     override fun onBindViewHolder(holder: EventLayoutAdapter.ViewHolder, position: Int) {
         holder.bind(events[position])
+        
     }
 
     override fun getItemCount() = events.size

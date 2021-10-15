@@ -70,24 +70,25 @@
             android:id="@+id/til_event_category"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
             android:layout_marginTop="@dimen/range_16"
             android:layout_marginStart="@dimen/range_0"
             android:layout_marginEnd="@dimen/range_0"
-            android:backgroundTint="@android:color/transparent"
             android:textColorHint="@color/whitegray"
             app:boxBackgroundColor="@color/white"
             app:boxStrokeColor="@color/blue"
+            android:hint="@string/hint_category_event"
             app:hintTextColor="@color/blue"
             >
-
-            <com.google.android.material.textfield.TextInputEditText
+            <AutoCompleteTextView
+                android:id="@+id/autoCompleteTextCategory"
+                android:layout_width="match_parent"
+                android:inputType="none"
                 android:textColor="@color/white"
                 android:backgroundTint="@android:color/transparent"
-                android:layout_width="match_parent"
-                android:textColorHighlight="@color/white"
-                android:hint="@string/hint_category_event"
-                android:layout_height="match_parent"/>
+                android:layout_height="match_parent"
+     />
+
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.textfield.TextInputLayout
@@ -129,12 +130,15 @@
             app:hintTextColor="@color/blue"
             app:endIconDrawable="@drawable/ic_date"
             app:endIconTint="@color/whitegray"
+            app:endIconMode="custom"
             >
 
             <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/tie_event_date"
                 android:textColor="@color/white"
                 android:backgroundTint="@android:color/transparent"
                 android:layout_width="match_parent"
+                android:inputType="date"
                 android:textColorHighlight="@color/white"
                 android:hint="@string/hint_date"
                 android:layout_height="match_parent"/>
@@ -154,13 +158,15 @@
             app:hintTextColor="@color/blue"
             app:endIconDrawable="@drawable/ic_time"
             app:endIconTint="@color/whitegray"
+            app:endIconMode="custom"
             >
-
             <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/tie_event_time"
                 android:textColor="@color/white"
                 android:backgroundTint="@android:color/transparent"
                 android:layout_width="match_parent"
                 android:textColorHighlight="@color/white"
+                android:inputType="time"
                 android:hint="@string/hint_event_time"
                 android:layout_height="match_parent"/>
         </com.google.android.material.textfield.TextInputLayout>
@@ -179,6 +185,7 @@
             app:hintTextColor="@color/blue"
             app:endIconDrawable="@drawable/ic_location"
             app:endIconTint="@color/whitegray"
+            app:endIconMode="custom"
             >
 
             <com.google.android.material.textfield.TextInputEditText
@@ -204,6 +211,7 @@
             app:hintTextColor="@color/blue"
             app:endIconDrawable="@drawable/ic_link"
             app:endIconTint="@color/whitegray"
+            app:endIconMode="custom"
             >
 
             <com.google.android.material.textfield.TextInputEditText
@@ -211,6 +219,7 @@
                 android:backgroundTint="@android:color/transparent"
                 android:layout_width="match_parent"
                 android:textColorHighlight="@color/white"
+                android:inputType="textWebEditText"
                 android:hint="@string/hint_registration"
                 android:layout_height="match_parent"/>
         </com.google.android.material.textfield.TextInputLayout>
@@ -292,8 +301,8 @@
                 android:textColor="@color/text_white_gray"/>
             <ImageView
                 android:id="@+id/iv_add_cover"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="160dp"
+                android:layout_height="160dp"
                 android:layout_gravity="center"
                 android:layout_marginTop="20dp"
                 android:layout_marginBottom="24dp"

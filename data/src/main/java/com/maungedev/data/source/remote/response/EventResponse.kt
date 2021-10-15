@@ -17,5 +17,6 @@ data class EventResponse(
     val numbersOfView: Int=0,
     val numbersOfRegistrationClick: Int=0,
     var favoriteBy: List<String>?= listOf(),
-    val organizer: String =""
+    val organizer: String ="",
+    val organizerUid: String =""
 )
