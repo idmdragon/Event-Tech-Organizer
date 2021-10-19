@@ -13,4 +13,5 @@ interface EventUseCase {
     fun getCurrentUser(): Flow<Resource<User>>
     fun getConferenceCategory(): Flow<Resource<List<ConferenceCategory>>>
     fun getCompetitionCategory(): Flow<Resource<List<CompetitionCategory>>>
+
 }

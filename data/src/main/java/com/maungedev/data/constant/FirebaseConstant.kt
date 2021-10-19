@@ -8,4 +8,10 @@ object FirebaseConstant {
         const val CONFERENCE_CATEGORY_COLLECTION = "conference_category"
         const val COMPETITION_CATEGORY_COLLECTION = "competition_category"
     }
+
+    object Field{
+        const val MY_EVENT = "myEvent"
+        const val UID = "uid"
+        const val ORGANIZER_UID = "organizerUid"
+    }
 }

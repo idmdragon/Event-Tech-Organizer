@@ -2,13 +2,15 @@ package com.maungedev.data.source.remote.service
 
 import android.net.Uri
 import com.google.firebase.auth.FirebaseAuth
-import com.google.firebase.auth.ktx.auth
+import com.google.firebase.firestore.FieldValue
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
 import com.google.firebase.storage.ktx.storage
 import com.maungedev.data.source.remote.FirebaseResponse
+import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.*
+import kotlinx.coroutines.launch
 import kotlinx.coroutines.tasks.await
 import java.lang.Exception
 
@@ -136,19 +138,55 @@ abstract class FirebaseService {
             }
         }.flowOn(Dispatchers.IO)
 
-    inline fun <reified ResponseType>getCollection(collection: String):Flow<FirebaseResponse<List<ResponseType>>> =
-        flow{
+    inline fun <reified ResponseType> getCollection(collection: String): Flow<FirebaseResponse<List<ResponseType>>> =
+        flow {
             val result = firestore
                 .collection(collection)
                 .get()
                 .await()
 
-            if (result.isEmpty){
+            if (result.isEmpty) {
                 emit(FirebaseResponse.Empty)
-            }else{
+            } else {
                 emit(FirebaseResponse.Success(result.toObjects(ResponseType::class.java)))
             }
         }.catch {
             emit(FirebaseResponse.Error(it.message.toString()))
         }.flowOn(Dispatchers.IO)
+
+
+    inline fun <FieldType, reified ResponseType> getDocumentsWhereField(
+        collection: String,
+        fieldName: String,
+        value: FieldType
+    ): Flow<FirebaseResponse<List<ResponseType>>> =
+        flow {
+            val result = firestore
+                .collection(collection)
+                .whereEqualTo(fieldName, value)
+                .get()
+                .await()
+
+            if (result.isEmpty) {
+                emit(FirebaseResponse.Empty)
+            } else {
+                emit(FirebaseResponse.Success(result.toObjects(ResponseType::class.java)))
+            }
+        }.catch {
+            emit(FirebaseResponse.Error(it.message.toString()))
+        }.flowOn(Dispatchers.IO)
+
+    fun addArrayStringValueAtDocField(
+        collection: String,
+        docId: String,
+        fieldName: String,
+        value: String
+    ) {
+        CoroutineScope(Dispatchers.IO).launch {
+            firestore.collection(collection)
+                .document(docId)
+                .update(fieldName, FieldValue.arrayUnion(value))
+                .await()
+        }
+    }
 }
