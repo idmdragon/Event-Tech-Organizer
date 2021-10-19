@@ -14,6 +14,8 @@ import kotlinx.coroutines.flow.Flow
 class AddEventViewModel(private val useCase: EventUseCase) : ViewModel() {
 
     private val imageUri = MutableLiveData<Uri>()
+    private val _user = MutableLiveData<User>()
+    val user : LiveData<User> = _user
 
     fun addEvent(event: Event, imageUri: Uri) =
         useCase.addEvent(event, imageUri).asLiveData()
@@ -22,7 +24,11 @@ class AddEventViewModel(private val useCase: EventUseCase) : ViewModel() {
         this.imageUri.value = uri
     }
 
-//    fun getCurrentUser() = useCase.getCurrentUser().asLiveData()
+    fun setCurrenctUser(user: User) {
+        _user.postValue(user)
+    }
+
+    fun getCurrentUser() = useCase.getCurrentUser().asLiveData()
 
     fun getImageUri(): LiveData<Uri> = imageUri
 
