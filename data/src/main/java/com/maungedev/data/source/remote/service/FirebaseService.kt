@@ -14,12 +14,12 @@ import java.lang.Exception
 
 abstract class FirebaseService {
 
-    private val auth = FirebaseAuth.getInstance()
+    val auth = FirebaseAuth.getInstance()
     val uid = auth.currentUser?.uid
     val firestore = Firebase.firestore
     val storage = Firebase.storage
 
-    fun getCurrentUserId() = uid
+    fun getCurrentUserId() = uid.toString()
 
     fun generateDocumentId(collection: String): String =
         firestore.collection(collection).document().id

@@ -40,6 +40,9 @@ val serviceModule = module {
     factory {
         EventService()
     }
+    factory {
+        UserService()
+    }
 
 }
 
@@ -48,7 +51,7 @@ val dataSourceModule = module {
         LocalDataSource(get(),get())
     }
     single {
-        RemoteDataSource(get(),get())
+        RemoteDataSource(get(),get(),get())
     }
 }
 

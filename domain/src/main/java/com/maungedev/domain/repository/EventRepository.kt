@@ -12,5 +12,7 @@ interface EventRepository {
     fun addEvent(event: Event, imageUri: Uri): Flow<Resource<Unit>>
     fun getConferenceCategory(): Flow<Resource<List<ConferenceCategory>>>
     fun getCompetitionCategory(): Flow<Resource<List<CompetitionCategory>>>
-//    fun getCurrentUser(): Flow<Resource<User>>
+    fun getCurrentUser(): Flow<Resource<User>>
+    fun getCurrentUserId(): String
+    fun getUser(id: String): Flow<Resource<User>>
 }

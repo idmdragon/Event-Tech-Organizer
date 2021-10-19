@@ -14,7 +14,7 @@ import kotlinx.coroutines.flow.Flow
 class RemoteDataSource(
     private val authService: AuthService,
     private val eventService: EventService,
-
+    private val userService: UserService,
 ) {
     fun signUp(email:String, password:String, user: User) =
         authService.signUp(email,password,user)
@@ -22,8 +22,11 @@ class RemoteDataSource(
     fun signIn(email:String, password:String) =
         authService.signIn(email,password)
 
-/*    fun getCurrentUser(): Flow<FirebaseResponse<UserResponse>> =
-        userService.getCurrentUser()*/
+    fun getCurrentUser(id: String): Flow<FirebaseResponse<UserResponse>> =
+        userService.getUser(id)
+
+    fun getCurrentUserId(): String =
+        userService.getCurrentUserId()
 
     fun insertEvent(event: Event, imageUri: Uri) =
         eventService.insertEvent(event,imageUri)

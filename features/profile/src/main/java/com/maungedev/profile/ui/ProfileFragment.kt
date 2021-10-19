@@ -25,14 +25,13 @@ class ProfileFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View {
         loadKoinModules(profileModule)
-
         _binding = FragmentProfileBinding.inflate(inflater, container, false)
         return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-//        viewModel.getCurrentUser().observe(viewLifecycleOwner, ::setProfileView)
+        viewModel.getCurrentUser().observe(viewLifecycleOwner, ::setProfileView)
     }
 
     private fun setProfileView(resource: Resource<User>?) {

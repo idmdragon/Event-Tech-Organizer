@@ -18,13 +18,19 @@ import com.maungedev.domain.model.User
 import com.maungedev.domain.repository.EventRepository
 import com.maungedev.domain.utils.Resource
 import kotlinx.coroutines.flow.Flow
+import kotlinx.coroutines.flow.emitAll
+import kotlinx.coroutines.flow.flow
 
 class EventRepositoryImpl(
     private val local: LocalDataSource,
     private val remote: RemoteDataSource
 ) : EventRepository {
-/*    override fun getCurrentUser(): Flow<Resource<User>> =
-        object :NetworkBoundResource<User,UserResponse>(){
+
+    override fun getCurrentUserId(): String =
+        remote.getCurrentUserId()
+
+    override fun getUser(id: String): Flow<Resource<User>> =
+        object : NetworkBoundResource<User, UserResponse>() {
             override fun loadFromDB(): Flow<User?> =
                 local.selectUser().toFlowModel()
 
@@ -32,11 +38,19 @@ class EventRepositoryImpl(
                 data == null
 
             override suspend fun createCall(): Flow<FirebaseResponse<UserResponse>> =
-                remote.getCurrentUser()
+                remote.getCurrentUser(id)
 
             override suspend fun saveCallResult(data: UserResponse) =
                 local.insertUser(data.toEntity())
-        }.asFlow()*/
+        }.asFlow()
+
+    override fun getCurrentUser(): Flow<Resource<User>> =
+        flow{
+            val userId = getCurrentUserId()
+            if (userId.isNotEmpty()){
+                emitAll(getUser(userId))
+            }
+        }
 
     override fun addEvent(event: Event, imageUri: Uri): Flow<Resource<Unit>> =
         object : NetworkBoundRequest<EventResponse>() {
