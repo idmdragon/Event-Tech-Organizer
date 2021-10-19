@@ -2,7 +2,6 @@ package com.maungedev.authentication.ui.login
 
 import android.content.Intent
 import android.os.Bundle
-import android.text.TextUtils.replace
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -12,12 +11,12 @@ import com.google.android.material.snackbar.Snackbar
 import com.maungedev.authentication.R
 import com.maungedev.authentication.databinding.FragmentLoginBinding
 import com.maungedev.authentication.di.authModule
+import com.maungedev.authentication.ui.register.RegisterViewModel
 import com.maungedev.authentication.ui.register.RegisterFragment
 import com.maungedev.domain.utils.Resource
 import com.maungedev.eventtechorganizer.main.MainActivity
 import org.koin.core.context.loadKoinModules
 import org.koin.android.viewmodel.ext.android.viewModel
-import org.koin.core.context.unloadKoinModules
 
 class LoginFragment : Fragment() {
 
@@ -95,9 +94,6 @@ class LoginFragment : Fragment() {
         }
     }
 
-    override fun onDestroyView() {
-        super.onDestroyView()
-        unloadKoinModules(authModule)
-    }
+
 
 }

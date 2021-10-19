@@ -13,11 +13,10 @@ val authModule = module {
     }
     viewModel {
         RegisterViewModel(get())
-
     }
     viewModel {
         LoginViewModel(get())
     }
-
 }
+
 

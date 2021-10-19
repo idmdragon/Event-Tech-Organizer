@@ -17,7 +17,6 @@ import com.maungedev.domain.utils.Resource
 import com.maungedev.eventtechorganizer.main.MainActivity
 import org.koin.core.context.loadKoinModules
 import org.koin.android.viewmodel.ext.android.viewModel
-import org.koin.core.context.unloadKoinModules
 
 class RegisterFragment : Fragment() {
 
@@ -107,10 +106,6 @@ class RegisterFragment : Fragment() {
         _binding = null
     }
 
-    override fun onDestroyView() {
-        super.onDestroyView()
-        unloadKoinModules(authModule)
-    }
 
     private fun loadingState(state: Boolean) {
         with(binding){

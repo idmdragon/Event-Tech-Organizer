@@ -8,6 +8,6 @@ import kotlinx.coroutines.flow.Flow
 class UserService : FirebaseService() {
 
     fun getCurrentUser(): Flow<FirebaseResponse<UserResponse>> =
-        getDocument(USER,getCurrentUserId() as String)
+        getDocument(USER,getCurrentUserId())
 
 }

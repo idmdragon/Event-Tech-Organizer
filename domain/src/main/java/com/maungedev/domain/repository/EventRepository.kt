@@ -8,7 +8,7 @@ import com.maungedev.domain.model.User
 import com.maungedev.domain.utils.Resource
 import kotlinx.coroutines.flow.Flow
 
-interface EventITRepository {
+interface EventRepository {
     fun addEvent(event: Event, imageUri: Uri): Flow<Resource<Unit>>
     fun getConferenceCategory(): Flow<Resource<List<ConferenceCategory>>>
     fun getCompetitionCategory(): Flow<Resource<List<CompetitionCategory>>>

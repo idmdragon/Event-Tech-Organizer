@@ -15,15 +15,14 @@ import com.maungedev.domain.model.CompetitionCategory
 import com.maungedev.domain.model.ConferenceCategory
 import com.maungedev.domain.model.Event
 import com.maungedev.domain.model.User
-import com.maungedev.domain.repository.EventITRepository
+import com.maungedev.domain.repository.EventRepository
 import com.maungedev.domain.utils.Resource
 import kotlinx.coroutines.flow.Flow
-import kotlinx.coroutines.flow.flow
 
-class EventITRepositoryImpl(
+class EventRepositoryImpl(
     private val local: LocalDataSource,
     private val remote: RemoteDataSource
-) : EventITRepository {
+) : EventRepository {
     override fun getCurrentUser(): Flow<Resource<User>> =
         object :NetworkBoundResource<User,UserResponse>(){
             override fun loadFromDB(): Flow<User?> =

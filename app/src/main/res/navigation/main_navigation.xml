@@ -12,7 +12,7 @@
         tools:layout="@layout/fragment_choose_event" />
     <fragment
         android:id="@+id/navigation_profile"
-        android:name="com.maungedev.profile.ProfileFragment"
+        android:name="com.maungedev.profile.ui.ProfileFragment"
         android:label="fragment_profile"
         tools:layout="@layout/fragment_profile" />
     <fragment

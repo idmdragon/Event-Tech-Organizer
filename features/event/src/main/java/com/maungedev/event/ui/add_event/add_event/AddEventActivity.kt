@@ -51,11 +51,11 @@ class AddEventActivity : AppCompatActivity() {
         setView()
 
         typeEvent(intent.getStringExtra(EVENT_TYPE)  as String)
-        viewModel.getCurrentUser().observe(this, {
+     /*   viewModel.getCurrentUser().observe(this, {
             if (it.data != null) {
                 viewModel.setCurrenctUser(it.data as User)
             }
-        })
+        })*/
 
 
     }
@@ -141,33 +141,37 @@ class AddEventActivity : AppCompatActivity() {
 
     private fun addEvent() {
         with(binding) {
-
-            viewModel.user.observe(this@AddEventActivity, { user ->
-
-                val event = Event(
-                    "",
-                    tilEventName.editText?.text.toString(),
-                    intent.getStringExtra(EVENT_TYPE).toString(),
-                    tilEventCategory.editText?.text.toString(),
-                    tilEventPrice.editText?.text.toString().toLong(),
-                    tilEventDate.editText?.text.toString(),
-                    tilEventTime.editText?.text.toString(),
-                    tilEventLocation.editText?.text.toString(),
-                    tilLinkRegistration.editText?.text.toString(),
-                    tilEventDescription.editText?.text.toString(),
-                    tilEventPrerequisite.editText?.text.toString(),
-                    "",
-                    0,
-                    0,
-                    listOf(),
-                    user.username,
-                    user.uid
-                )
+            val event = Event(
+                "",
+                tilEventName.editText?.text.toString(),
+                intent.getStringExtra(EVENT_TYPE).toString(),
+                tilEventCategory.editText?.text.toString(),
+                tilEventPrice.editText?.text.toString().toLong(),
+                tilEventDate.editText?.text.toString(),
+                tilEventTime.editText?.text.toString(),
+                tilEventLocation.editText?.text.toString(),
+                tilLinkRegistration.editText?.text.toString(),
+                tilEventDescription.editText?.text.toString(),
+                tilEventPrerequisite.editText?.text.toString(),
+                "",
+                0,
+                0,
+                listOf(),
+                "TES USERNAME",
+                "TES USERID"
+            )
+            viewModel.getImageUri().value?.let {
                 viewModel.addEvent(
-                    event, viewModel.getImageUri().value!!
+                    event, it
                 ).observe(this@AddEventActivity, ::addEventResponse)
+            }
 
-            })
+
+/*            viewModel.user.observe(this@AddEventActivity, { user ->
+
+
+
+            })*/
 
 
         }

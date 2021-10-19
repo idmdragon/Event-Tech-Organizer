@@ -9,4 +9,5 @@ import com.maungedev.domain.usecase.AuthUseCase
 class LoginViewModel(private val authUseCase: AuthUseCase) : ViewModel() {
     fun signIn(email: String, password: String) =
         authUseCase.signInUser(email,password).asLiveData()
+
 }

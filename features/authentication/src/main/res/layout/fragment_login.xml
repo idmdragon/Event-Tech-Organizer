@@ -101,7 +101,7 @@
             android:layout_width="match_parent"
 
             android:textColorHighlight="@color/white"
-            android:inputType="textEmailAddress"
+            android:inputType="textPassword"
             android:hint="@string/hint_password"
             android:layout_height="match_parent"/>
     </com.google.android.material.textfield.TextInputLayout>

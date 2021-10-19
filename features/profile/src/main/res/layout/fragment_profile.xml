@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/black"
-    tools:context="com.maungedev.profile.ProfileFragment">
+    tools:context="com.maungedev.profile.ui.ProfileFragment">
 
     <TextView
         android:id="@+id/tvTitleFavorite"

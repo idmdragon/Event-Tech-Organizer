@@ -1,9 +1,9 @@
 package com.maungedev.data.source.remote.service
 
 import android.net.Uri
+import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.firestore.ktx.firestore
-import com.google.firebase.firestore.ktx.toObjects
 import com.google.firebase.ktx.Firebase
 import com.google.firebase.storage.ktx.storage
 import com.maungedev.data.source.remote.FirebaseResponse
@@ -11,15 +11,15 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.*
 import kotlinx.coroutines.tasks.await
 import java.lang.Exception
-import java.net.URI
 
 abstract class FirebaseService {
 
-    val auth = Firebase.auth
+    private val auth = FirebaseAuth.getInstance()
+    val uid = auth.currentUser!!.uid
     val firestore = Firebase.firestore
     val storage = Firebase.storage
 
-    fun getCurrentUserId() = auth.currentUser?.uid
+    fun getCurrentUserId() = uid
 
     fun generateDocumentId(collection: String): String =
         firestore.collection(collection).document().id
