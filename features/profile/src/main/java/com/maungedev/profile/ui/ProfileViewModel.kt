@@ -6,6 +6,6 @@ import com.maungedev.domain.usecase.ProfileUseCase
 
 class ProfileViewModel(private val useCase: ProfileUseCase) : ViewModel() {
 
-    fun getCurrentUser() = useCase.getCurrentUser().asLiveData()
+//    fun getCurrentUser() = useCase.getCurrentUser().asLiveData()
 
 }

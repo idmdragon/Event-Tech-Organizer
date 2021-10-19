@@ -15,7 +15,7 @@ import java.lang.Exception
 abstract class FirebaseService {
 
     private val auth = FirebaseAuth.getInstance()
-    val uid = auth.currentUser!!.uid
+    val uid = auth.currentUser?.uid
     val firestore = Firebase.firestore
     val storage = Firebase.storage
 

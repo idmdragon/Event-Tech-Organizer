@@ -32,7 +32,7 @@ class ProfileFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        viewModel.getCurrentUser().observe(viewLifecycleOwner, ::setProfileView)
+//        viewModel.getCurrentUser().observe(viewLifecycleOwner, ::setProfileView)
     }
 
     private fun setProfileView(resource: Resource<User>?) {

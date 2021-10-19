@@ -23,7 +23,7 @@ class EventRepositoryImpl(
     private val local: LocalDataSource,
     private val remote: RemoteDataSource
 ) : EventRepository {
-    override fun getCurrentUser(): Flow<Resource<User>> =
+/*    override fun getCurrentUser(): Flow<Resource<User>> =
         object :NetworkBoundResource<User,UserResponse>(){
             override fun loadFromDB(): Flow<User?> =
                 local.selectUser().toFlowModel()
@@ -36,7 +36,7 @@ class EventRepositoryImpl(
 
             override suspend fun saveCallResult(data: UserResponse) =
                 local.insertUser(data.toEntity())
-        }.asFlow()
+        }.asFlow()*/
 
     override fun addEvent(event: Event, imageUri: Uri): Flow<Resource<Unit>> =
         object : NetworkBoundRequest<EventResponse>() {

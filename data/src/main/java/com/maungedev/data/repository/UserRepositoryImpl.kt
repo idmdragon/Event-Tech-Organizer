@@ -25,7 +25,7 @@ class UserRepositoryImpl(
     private val remote: RemoteDataSource
 ) : UserRepository {
 
-    override fun getCurrentUser(): Flow<Resource<User>> =
+/*    override fun getCurrentUser(): Flow<Resource<User>> =
         object : NetworkBoundResource<User, UserResponse>() {
             override fun loadFromDB(): Flow<User?> =
                 local.selectUser().toFlowModel()
@@ -38,7 +38,7 @@ class UserRepositoryImpl(
 
             override suspend fun saveCallResult(data: UserResponse) =
                 local.insertUser(data.toEntity())
-        }.asFlow()
+        }.asFlow()*/
 
     override fun updateUsername(username: String): Flow<Resource<Unit>> {
         TODO("Not yet implemented")

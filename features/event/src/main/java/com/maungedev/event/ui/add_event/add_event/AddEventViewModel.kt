@@ -22,7 +22,7 @@ class AddEventViewModel(private val useCase: EventUseCase) : ViewModel() {
         this.imageUri.value = uri
     }
 
-    fun getCurrentUser() = useCase.getCurrentUser().asLiveData()
+//    fun getCurrentUser() = useCase.getCurrentUser().asLiveData()
 
     fun getImageUri(): LiveData<Uri> = imageUri
 

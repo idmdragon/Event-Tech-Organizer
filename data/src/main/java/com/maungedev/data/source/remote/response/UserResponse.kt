@@ -4,7 +4,6 @@ data class UserResponse(
     val uid: String = "",
     val username: String = "",
     val email: String = "",
-    val schedule: String = "",
-    val favorite: String = ""
+    val myEvent: List<String> = listOf(),
 ) {
 }

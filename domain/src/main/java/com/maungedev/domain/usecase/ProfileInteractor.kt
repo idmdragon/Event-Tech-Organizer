@@ -7,8 +7,8 @@ import kotlinx.coroutines.flow.Flow
 
 
 class ProfileInteractor (private val userRepository: UserRepository): ProfileUseCase {
-    override fun getCurrentUser(): Flow<Resource<User>> =
-        userRepository.getCurrentUser()
+/*    override fun getCurrentUser(): Flow<Resource<User>> =
+        userRepository.getCurrentUser()*/
 
     override fun updateUsername(username: String): Flow<Resource<Unit>> =
         userRepository.updateUsername(username)

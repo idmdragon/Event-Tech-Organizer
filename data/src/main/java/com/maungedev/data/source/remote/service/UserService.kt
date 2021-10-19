@@ -7,7 +7,7 @@ import kotlinx.coroutines.flow.Flow
 
 class UserService : FirebaseService() {
 
-    fun getCurrentUser(): Flow<FirebaseResponse<UserResponse>> =
-        getDocument(USER,getCurrentUserId())
+ /*   fun getCurrentUser(): Flow<FirebaseResponse<UserResponse>> =
+        getDocument(USER,getCurrentUserId())*/
 
 }
