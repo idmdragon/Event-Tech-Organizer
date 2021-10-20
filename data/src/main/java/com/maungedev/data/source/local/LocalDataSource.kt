@@ -39,6 +39,9 @@ class LocalDataSource(
     fun selectAllMyEvents(): Flow<List<EventEntity>> =
         eventDao.selectAllMyEvents()
 
+    fun selectEventByUid(uid: String): Flow<EventEntity> =
+        eventDao.selectEventByUid(uid)
+
     fun getTotalEvent(): Int =
         eventDao.selectTotalEvent()
 

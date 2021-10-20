@@ -39,7 +39,6 @@ class InsightFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-
         val listEvent = ArrayList<String>()
         listEvent.add("domUwPDh73JDpDVxEVaq")
         listEvent.add("aMSG78VLRp58lnQ0I61o")
@@ -63,17 +62,16 @@ class InsightFragment : Fragment() {
                         LinearLayoutManager.VERTICAL, false
                     )
 
-                    Log.d("CEKK","Isi nya ${viewModel.totalView.value}")
                     viewModel.apply {
-                        totalView.observe(viewLifecycleOwner,{
+                        totalView.observe(viewLifecycleOwner, {
                             tvTotalSeen.text = it.toString()
                         })
-                        totalRegistrationClick.observe(viewLifecycleOwner,{
+                        totalRegistrationClick.observe(viewLifecycleOwner, {
                             tvTotalOpened.text = it.toString()
-                            })
-                        totalEvent.observe(viewLifecycleOwner,{
+                        })
+                        totalEvent.observe(viewLifecycleOwner, {
                             tvTotalEvent.text = it.toString()
-                            })
+                        })
 
 
                     }

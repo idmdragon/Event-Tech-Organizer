@@ -50,6 +50,11 @@ fun EventEntity.toModel(): Event =
     )
 
 
+fun Flow<EventEntity>.toFlowModel(): Flow<Event> =
+    this.map {
+        it.toModel()
+    }
+
 fun List<EventEntity>.toListModel(): List<Event> =
     this.map {
         it.toModel()

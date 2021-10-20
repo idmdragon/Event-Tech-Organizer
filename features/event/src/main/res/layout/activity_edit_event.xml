@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/black"
-    tools:context=".ui.add.add_event.AddEventActivity">
+    tools:context=".ui.edit.EditEventActivity">
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -39,7 +39,7 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="@+id/btn_back"
-                android:text="@string/title_add_event" />
+                android:text="@string/title_edit_event" />
         </androidx.constraintlayout.widget.ConstraintLayout>
 
         <com.google.android.material.textfield.TextInputLayout
@@ -55,7 +55,7 @@
             app:boxBackgroundColor="@color/white"
             app:boxStrokeColor="@color/blue"
             app:hintTextColor="@color/blue"
-           >
+            >
 
             <com.google.android.material.textfield.TextInputEditText
                 android:textColor="@color/white"
@@ -87,7 +87,7 @@
                 android:textColor="@color/white"
                 android:backgroundTint="@android:color/transparent"
                 android:layout_height="match_parent"
-     />
+                />
 
         </com.google.android.material.textfield.TextInputLayout>
 
@@ -311,7 +311,7 @@
         </LinearLayout>
 
         <Button
-            android:id="@+id/btn_add_event"
+            android:id="@+id/btn_update_event"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             style="@style/ButtonStyle16"
@@ -325,7 +325,7 @@
             android:layout_height="wrap_content"
             android:indeterminateTint="@color/white"
             android:visibility="gone"
-              />
+            />
     </LinearLayout>
 
 </ScrollView>

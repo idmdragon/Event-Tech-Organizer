@@ -1,10 +1,9 @@
-package com.maungedev.event.ui.add_event.add_event
+package com.maungedev.event.ui.add.add_event
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.provider.MediaStore
-import android.util.Log
 import android.widget.*
 import androidx.core.view.isVisible
 import com.bumptech.glide.Glide
@@ -293,6 +292,5 @@ class AddEventActivity : AppCompatActivity() {
         super.onDestroy()
         unloadKoinModules(eventModule)
     }
-
 
 }

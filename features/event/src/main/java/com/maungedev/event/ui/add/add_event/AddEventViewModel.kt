@@ -1,4 +1,4 @@
-package com.maungedev.event.ui.add_event.add_event
+package com.maungedev.event.ui.add.add_event
 
 import android.net.Uri
 import androidx.lifecycle.LiveData
@@ -8,8 +8,6 @@ import androidx.lifecycle.asLiveData
 import com.maungedev.domain.model.Event
 import com.maungedev.domain.model.User
 import com.maungedev.domain.usecase.EventUseCase
-import com.maungedev.domain.utils.Resource
-import kotlinx.coroutines.flow.Flow
 
 class AddEventViewModel(private val useCase: EventUseCase) : ViewModel() {
 

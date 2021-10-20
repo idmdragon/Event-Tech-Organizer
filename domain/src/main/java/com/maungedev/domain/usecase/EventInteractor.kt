@@ -24,4 +24,10 @@ class EventInteractor(private val eventRepository: EventRepository): EventUseCas
 
     override fun getMyEvents(ids: List<String>): Flow<Resource<List<Event>>> =
         eventRepository.getMyEvents(ids)
+
+    override fun getEventById(id: String): Flow<Resource<Event>> =
+        eventRepository.getEventById(id)
+
+    override fun updateEvent(event: Event): Flow<Resource<Unit>> =
+        eventRepository.updateEvent(event)
 }

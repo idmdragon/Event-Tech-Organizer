@@ -10,9 +10,10 @@ import com.maungedev.domain.model.User
 
 interface EventUseCase {
     fun addEvent(event: Event, imageUri: Uri):Flow<Resource<Unit>>
+    fun updateEvent(event: Event): Flow<Resource<Unit>>
     fun getCurrentUser(): Flow<Resource<User>>
     fun getConferenceCategory(): Flow<Resource<List<ConferenceCategory>>>
     fun getCompetitionCategory(): Flow<Resource<List<CompetitionCategory>>>
     fun getMyEvents(ids: List<String>): Flow<Resource<List<Event>>>
-
+    fun getEventById(id: String): Flow<Resource<Event>>
 }

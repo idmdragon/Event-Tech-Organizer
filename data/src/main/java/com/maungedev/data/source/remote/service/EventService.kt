@@ -65,4 +65,14 @@ class EventService : FirebaseService() {
 
     fun getAllCompetitionCategory(): Flow<FirebaseResponse<List<CompetitionCategoryResponse>>> =
         getCollection(FirebaseConstant.FirebaseCollection.COMPETITION_CATEGORY_COLLECTION)
+
+    fun getEventById(id: String): Flow<FirebaseResponse<EventResponse>> =
+        getDocument(FirebaseConstant.FirebaseCollection.EVENT_COLLECTION,id)
+
+    fun updateEvent(event: Event): Flow<FirebaseResponse<EventResponse>> =
+        setDocument(
+            FirebaseConstant.FirebaseCollection.EVENT_COLLECTION,
+            event.uid,
+            event
+        )
 }

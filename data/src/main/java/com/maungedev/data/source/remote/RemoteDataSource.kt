@@ -14,11 +14,11 @@ class RemoteDataSource(
     private val eventService: EventService,
     private val userService: UserService,
 ) {
-    fun signUp(email:String, password:String, user: User) =
-        authService.signUp(email,password,user)
+    fun signUp(email: String, password: String, user: User) =
+        authService.signUp(email, password, user)
 
-    fun signIn(email:String, password:String) =
-        authService.signIn(email,password)
+    fun signIn(email: String, password: String) =
+        authService.signIn(email, password)
 
     fun getCurrentUser(id: String): Flow<FirebaseResponse<UserResponse>> =
         userService.getUser(id)
@@ -26,19 +26,23 @@ class RemoteDataSource(
     fun getCurrentUserId(): String =
         userService.getCurrentUserId()
 
-    fun insertEvent(event: Event, imageUri: Uri) =
-        eventService.insertEvent(event,imageUri)
+    fun insertEvent(event: Event, imageUri: Uri):Flow<FirebaseResponse<EventResponse>> =
+        eventService.insertEvent(event, imageUri)
 
-    fun getAllConferenceCategory():Flow<FirebaseResponse<List<ConferenceCategoryResponse>>> =
+    fun getAllConferenceCategory(): Flow<FirebaseResponse<List<ConferenceCategoryResponse>>> =
         eventService.getAllConferenceCategory()
 
-    fun getAllCompetitionCategory():Flow<FirebaseResponse<List<CompetitionCategoryResponse>>> =
+    fun getAllCompetitionCategory(): Flow<FirebaseResponse<List<CompetitionCategoryResponse>>> =
         eventService.getAllCompetitionCategory()
 
-    fun getMyEvents(ids: List<String>):Flow<FirebaseResponse<List<EventResponse>>> =
+    fun getMyEvents(ids: List<String>): Flow<FirebaseResponse<List<EventResponse>>> =
         eventService.getMyEvents(ids)
 
+    fun getEventById(id: String): Flow<FirebaseResponse<EventResponse>> =
+        eventService.getEventById(id)
 
+    fun updateEvent(event: Event): Flow<FirebaseResponse<EventResponse>> =
+        eventService.updateEvent(event)
 
 
 }

@@ -5,6 +5,7 @@
     <string name="desc_conference">Conference merupakan event yang berbentuk pertemuan seperti workshop, seminar maupun webinar.</string>
     <string name="desc_competition">Competition merupakan event yang berkaitan dengan perlombaan yang ada pada bidang Teknologi.</string>
     <string name="title_add_event">Buat Event</string>
+    <string name="title_edit_event">Sunting Event</string>
     <string name="hint_event_name">Nama Event</string>
     <string name="hint_category_event">Kategori Event</string>
     <string name="hint_cost">Biaya Masuk (Rp)</string>
@@ -17,4 +18,5 @@
     <string name="text_masukan_poster_event">Masukan Poster Event</string>
     <string name="text_subtitle_poster_event">Poster akan ditampilkan pada halaman cover dan detail dari event yang akan anda adakan</string>
     <string name="text_publication_event">Publikasikan Event</string>
+    <string name="text_edit_event">Simpan Perubahan</string>
 </resources>

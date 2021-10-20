@@ -124,4 +124,31 @@ class EventRepositoryImpl(
             override suspend fun saveCallResult(data: List<CompetitionCategoryResponse>) =
                 local.insertCompetitionCategory(data.toListCompetitionCategoryEntity())
         }.asFlow()
+
+    override fun getEventById(id: String): Flow<Resource<Event>> =
+        object : NetworkBoundResource<Event, EventResponse>() {
+            override fun loadFromDB(): Flow<Event?> =
+                local.selectEventByUid(id).toFlowModel()
+
+            override fun shouldFetch(data: Event?): Boolean =
+                data == null
+
+            override suspend fun createCall(): Flow<FirebaseResponse<EventResponse>> =
+                remote.getEventById(id)
+
+            override suspend fun saveCallResult(data: EventResponse) =
+                local.insertEvent(data.toEntity())
+        }.asFlow()
+
+    override fun updateEvent(event: Event): Flow<Resource<Unit>> =
+        object : NetworkBoundRequest<EventResponse>() {
+
+            override suspend fun createCall(): Flow<FirebaseResponse<EventResponse>> =
+                remote.updateEvent(event)
+
+            override suspend fun saveCallResult(data: EventResponse) =
+                local.insertEvent(data.toEntity())
+
+        }.asFlow()
+
 }

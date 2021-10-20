@@ -1,4 +1,4 @@
-package com.maungedev.event.ui.add_event.choose_event
+package com.maungedev.event.ui.add.choose_event
 
 import android.content.Intent
 import android.os.Bundle

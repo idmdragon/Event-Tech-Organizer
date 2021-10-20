@@ -34,6 +34,9 @@ interface EventDao {
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insertEvents(listEvent: List<EventEntity>)
 
+    @Query("SELECT * FROM event WHERE uid = :uid")
+    fun selectEventByUid(uid: String): Flow<EventEntity>
+
     @Query("SELECT COUNT(eventName) FROM Event")
     fun selectTotalEvent(): Int
 

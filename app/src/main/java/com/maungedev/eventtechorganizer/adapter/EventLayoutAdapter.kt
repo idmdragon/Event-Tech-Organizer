@@ -1,6 +1,7 @@
 package com.maungedev.eventtechorganizer.adapter
 
 import android.content.Context
+import android.content.Intent
 import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
 import android.view.LayoutInflater
@@ -11,6 +12,8 @@ import com.bumptech.glide.load.resource.bitmap.CenterCrop
 import com.bumptech.glide.load.resource.bitmap.RoundedCorners
 import com.bumptech.glide.request.RequestOptions
 import com.maungedev.domain.model.Event
+import com.maungedev.eventtechorganizer.constant.ExtraNameConstant
+import com.maungedev.eventtechorganizer.constant.PageNameConstant.EDIT_EVENT_PAGE
 import com.maungedev.eventtechorganizer.databinding.ItemEventBinding
 
 class EventLayoutAdapter(private val context: Context) :
@@ -50,6 +53,10 @@ class EventLayoutAdapter(private val context: Context) :
                     .apply(RequestOptions())
                     .into(ivPoster)
 
+                itemView.setOnClickListener {
+                    context.startActivity(Intent(itemView.context,Class.forName(EDIT_EVENT_PAGE)).putExtra(
+                        ExtraNameConstant.EVENT_UID,item.uid))
+                }
             }
         }
     }
