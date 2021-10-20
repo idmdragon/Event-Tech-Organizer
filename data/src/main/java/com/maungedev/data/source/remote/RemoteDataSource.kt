@@ -1,9 +1,7 @@
 package com.maungedev.data.source.remote
 
 import android.net.Uri
-import com.maungedev.data.source.remote.response.CompetitionCategoryResponse
-import com.maungedev.data.source.remote.response.ConferenceCategoryResponse
-import com.maungedev.data.source.remote.response.UserResponse
+import com.maungedev.data.source.remote.response.*
 import com.maungedev.data.source.remote.service.AuthService
 import com.maungedev.data.source.remote.service.EventService
 import com.maungedev.data.source.remote.service.UserService
@@ -36,4 +34,11 @@ class RemoteDataSource(
 
     fun getAllCompetitionCategory():Flow<FirebaseResponse<List<CompetitionCategoryResponse>>> =
         eventService.getAllCompetitionCategory()
+
+    fun getMyEvents(ids: List<String>):Flow<FirebaseResponse<List<EventResponse>>> =
+        eventService.getMyEvents(ids)
+
+
+
+
 }

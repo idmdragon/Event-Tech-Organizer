@@ -1,6 +1,7 @@
 package com.maungedev.profile.ui
 
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -41,6 +42,7 @@ class ProfileFragment : Fragment() {
 
                 binding.apply {
                     resource.data.let { user ->
+
                         if (user != null) {
                             tvEmail.text = user.email
                             tvUsername.text = user.username

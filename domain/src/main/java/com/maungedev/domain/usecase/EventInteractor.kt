@@ -21,4 +21,7 @@ class EventInteractor(private val eventRepository: EventRepository): EventUseCas
 
     override fun getCompetitionCategory(): Flow<Resource<List<CompetitionCategory>>> =
         eventRepository.getCompetitionCategory()
+
+    override fun getMyEvents(ids: List<String>): Flow<Resource<List<Event>>> =
+        eventRepository.getMyEvents(ids)
 }

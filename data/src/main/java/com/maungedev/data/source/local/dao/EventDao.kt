@@ -27,4 +27,11 @@ interface EventDao {
 
     @Query("SELECT * FROM competition_category")
     fun selectAllCompetitionCategory(): Flow<List<CompetitionCategoryEntity>>
+
+    @Query("SELECT * FROM Event")
+    fun selectAllMyEvents(): Flow<List<EventEntity>>
+
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
+    suspend fun insertEvents(listEvent: List<EventEntity>)
+
 }

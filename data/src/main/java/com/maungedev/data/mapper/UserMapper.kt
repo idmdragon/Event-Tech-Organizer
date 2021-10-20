@@ -1,9 +1,7 @@
 package com.maungedev.data.mapper
 
-import com.maungedev.data.source.local.entity.ConferenceCategoryEntity
 import com.maungedev.data.source.local.entity.UserEntity
 import com.maungedev.data.source.remote.response.UserResponse
-import com.maungedev.domain.model.ConferenceCategory
 import com.maungedev.domain.model.User
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.map

@@ -21,6 +21,9 @@ class LocalDataSource(
     suspend fun insertEvent(eventEntity: EventEntity): Unit =
         eventDao.insertEvent(eventEntity)
 
+    suspend fun insertEvents(listEvent: List<EventEntity>): Unit =
+        eventDao.insertEvents(listEvent)
+
     suspend fun insertConferenceCategory(conferenceCategoryEntity: List<ConferenceCategoryEntity>): Unit =
         eventDao.insertConferenceCategory(conferenceCategoryEntity)
 
@@ -32,4 +35,8 @@ class LocalDataSource(
 
     fun selectAllCompetitionCategory(): Flow<List<CompetitionCategoryEntity>> =
         eventDao.selectAllCompetitionCategory()
+
+    fun selectAllMyEvents(): Flow<List<EventEntity>> =
+        eventDao.selectAllMyEvents()
+
 }

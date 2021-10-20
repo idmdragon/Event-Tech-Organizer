@@ -1,18 +1,30 @@
 package com.maungedev.event.ui.home
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
-import androidx.fragment.app.activityViewModels
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.google.android.material.snackbar.Snackbar
 import com.maungedev.domain.model.Event
+import com.maungedev.domain.model.User
+import com.maungedev.domain.utils.Resource
 import com.maungedev.event.databinding.FragmentHomeBinding
+import com.maungedev.event.di.eventModule
 import com.maungedev.eventtechorganizer.adapter.EventLayoutAdapter
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
+import org.koin.android.viewmodel.ext.android.viewModel
+import org.koin.core.context.loadKoinModules
+import org.koin.core.context.unloadKoinModules
+
 class HomeFragment : Fragment() {
 
-    private val viewModel: HomeViewModel by activityViewModels()
+    private val viewModel: HomeViewModel by viewModel()
     private var _binding: FragmentHomeBinding? = null
     private lateinit var adapter: EventLayoutAdapter
     private val binding get() = _binding!!
@@ -22,21 +34,51 @@ class HomeFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
+        loadKoinModules(eventModule)
         _binding = FragmentHomeBinding.inflate(inflater, container, false)
-        viewModel.getMyEvent().observe(viewLifecycleOwner, ::setMyEvent)
 
         return binding.root
     }
 
-    private fun setMyEvent(list: List<Event>) {
-        adapter = EventLayoutAdapter(requireContext())
-        adapter.setItems(list)
-        binding.rvHome.adapter = adapter
-        binding.rvHome.layoutManager = LinearLayoutManager(
-            activity,
-            LinearLayoutManager.VERTICAL, false
-        )
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+        val listEvent = ArrayList<String>()
+        listEvent.add("domUwPDh73JDpDVxEVaq")
+        listEvent.add("aMSG78VLRp58lnQ0I61o")
+        listEvent.add("HBz1YofDoLNqm8m71ydi")
+        viewModel.getAllMyEvent(listEvent).observe(viewLifecycleOwner, ::setMyEvent)
     }
+
+    private fun setMyEvent(resource: Resource<List<Event>>?) {
+        when (resource) {
+            is Resource.Success -> {
+                loadingState(false)
+                adapter = EventLayoutAdapter(requireContext())
+                resource.data?.let { adapter.setItems(it) }
+                binding.rvHome.adapter = adapter
+                binding.rvHome.layoutManager = LinearLayoutManager(
+                    activity,
+                    LinearLayoutManager.VERTICAL, false
+                )
+
+            }
+            is Resource.Loading -> {
+                loadingState(true)
+            }
+
+            is Resource.Error -> {
+                loadingState(false)
+                Snackbar.make(binding.root, resource.message.toString(), Snackbar.LENGTH_LONG)
+                    .show()
+            }
+        }
+    }
+
+    private fun loadingState(state: Boolean) {
+        binding.progressBar.isVisible = state
+    }
+
 
     override fun onDestroyView() {
         super.onDestroyView()

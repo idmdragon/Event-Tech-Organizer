@@ -1,9 +1,11 @@
 package com.maungedev.data.source.remote.service
 
 import android.net.Uri
+import android.util.Log
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FieldValue
 import com.google.firebase.firestore.ktx.firestore
+import com.google.firebase.firestore.ktx.toObject
 import com.google.firebase.ktx.Firebase
 import com.google.firebase.storage.ktx.storage
 import com.maungedev.data.source.remote.FirebaseResponse
@@ -189,4 +191,27 @@ abstract class FirebaseService {
                 .await()
         }
     }
+
+    inline fun < reified ResponseType> getDocumentsWhereIds(
+        collection: String,
+        fieldName: String,
+        value: List<String>
+    ): Flow<FirebaseResponse<List<ResponseType>>> =
+        flow {
+            val result = firestore
+                .collection(collection)
+                .whereIn(fieldName,value)
+                .get()
+                .await()
+
+            if (result.isEmpty) {
+                emit(FirebaseResponse.Empty)
+            } else {
+                emit(FirebaseResponse.Success(result.toObjects(ResponseType::class.java)))
+            }
+        }.catch {
+            emit(FirebaseResponse.Error(it.message.toString()))
+        }.flowOn(Dispatchers.IO)
+
+
 }

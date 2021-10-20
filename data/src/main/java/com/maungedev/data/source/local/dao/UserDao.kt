@@ -15,4 +15,5 @@ interface UserDao {
 
     @Query("SELECT * FROM user")
     fun selectCurrentUser(): Flow<UserEntity>
+
 }

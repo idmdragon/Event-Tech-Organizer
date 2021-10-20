@@ -3,6 +3,7 @@ package com.maungedev.event.di
 import com.maungedev.domain.usecase.EventInteractor
 import com.maungedev.domain.usecase.EventUseCase
 import com.maungedev.event.ui.add_event.add_event.AddEventViewModel
+import com.maungedev.event.ui.home.HomeViewModel
 import org.koin.android.viewmodel.dsl.viewModel
 import org.koin.dsl.module
 
@@ -12,6 +13,9 @@ val eventModule = module {
     }
     viewModel {
         AddEventViewModel(get())
+    }
+    viewModel {
+        HomeViewModel(get())
     }
 }
 

@@ -1,18 +1,12 @@
 package com.maungedev.event.ui.home
 
-import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.maungedev.domain.model.Event
-import com.maungedev.eventtechorganizer.dummy.DummyData
+import androidx.lifecycle.asLiveData
+import com.maungedev.domain.usecase.EventUseCase
 
-class HomeViewModel : ViewModel() {
+class HomeViewModel(private val useCase: EventUseCase) : ViewModel() {
 
-    private val _listEvent = MutableLiveData<List<Event>>()
+    fun getAllMyEvent(ids: List<String>) = useCase.getMyEvents(ids).asLiveData()
 
-    fun getMyEvent() : LiveData<List<Event>> {
-        _listEvent.value = DummyData.generateDummyEvent()
-        return _listEvent
-    }
 
 }
