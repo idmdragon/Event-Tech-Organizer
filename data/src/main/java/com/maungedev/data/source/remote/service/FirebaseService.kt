@@ -191,6 +191,20 @@ abstract class FirebaseService {
                 .await()
         }
     }
+    fun removeArrayStringValueAtDocField(
+        collection: String,
+        docId: String,
+        fieldName: String,
+        value: String
+    ) {
+        CoroutineScope(Dispatchers.IO).launch {
+            firestore.collection(collection)
+                .document(docId)
+                .update(fieldName, FieldValue.arrayRemove(value))
+                .await()
+
+        }
+    }
 
     inline fun < reified ResponseType> getDocumentsWhereIds(
         collection: String,
@@ -213,6 +227,32 @@ abstract class FirebaseService {
             emit(FirebaseResponse.Error(it.message.toString()))
         }.flowOn(Dispatchers.IO)
 
+    fun deleteDocument(collection: String,docId:String):Flow<FirebaseResponse<Unit>> =
+        flow <FirebaseResponse<Unit>>{
+            firestore
+                .collection(collection)
+                .document(docId)
+                .delete()
+                .await()
+
+            emit(FirebaseResponse.Success(Unit))
+
+        }.catch {
+            emit(FirebaseResponse.Error(it.message.toString()))
+        }.flowOn(Dispatchers.IO)
+
+    fun deleteFile(reference:String,fileName:String):Flow<FirebaseResponse<Unit>> =
+        flow <FirebaseResponse<Unit>>{
+            storage.reference
+                .child(reference)
+                .child("$fileName.jpg")
+                .delete()
+                .await()
+
+            emit(FirebaseResponse.Success(Unit))
+        }.catch {
+            emit(FirebaseResponse.Error(it.message.toString()))
+        }.flowOn(Dispatchers.IO)
 
 
 }

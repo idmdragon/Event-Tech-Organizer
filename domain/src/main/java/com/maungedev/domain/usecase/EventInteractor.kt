@@ -30,4 +30,7 @@ class EventInteractor(private val eventRepository: EventRepository): EventUseCas
 
     override fun updateEvent(event: Event): Flow<Resource<Unit>> =
         eventRepository.updateEvent(event)
+
+    override fun deleteEvent(id: String): Flow<Resource<Unit>> =
+        eventRepository.deleteEvent(id)
 }

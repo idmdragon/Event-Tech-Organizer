@@ -16,4 +16,5 @@ interface EventUseCase {
     fun getCompetitionCategory(): Flow<Resource<List<CompetitionCategory>>>
     fun getMyEvents(ids: List<String>): Flow<Resource<List<Event>>>
     fun getEventById(id: String): Flow<Resource<Event>>
+    fun deleteEvent(id: String): Flow<Resource<Unit>>
 }

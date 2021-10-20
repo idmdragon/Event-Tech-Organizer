@@ -1,5 +1,6 @@
 package com.maungedev.event.ui.home
 
+import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
@@ -14,6 +15,7 @@ import com.maungedev.domain.utils.Resource
 import com.maungedev.event.databinding.FragmentHomeBinding
 import com.maungedev.event.di.eventModule
 import com.maungedev.eventtechorganizer.adapter.EventLayoutAdapter
+import com.maungedev.eventtechorganizer.main.MainActivity
 import org.koin.android.viewmodel.ext.android.viewModel
 import org.koin.core.context.loadKoinModules
 
@@ -42,7 +44,33 @@ class HomeFragment : Fragment() {
         listEvent.add("domUwPDh73JDpDVxEVaq")
         listEvent.add("aMSG78VLRp58lnQ0I61o")
         listEvent.add("HBz1YofDoLNqm8m71ydi")
+
         viewModel.getAllMyEvent(listEvent).observe(viewLifecycleOwner, ::setMyEvent)
+        binding.tvTitle.setOnClickListener {
+            viewModel.deleteEvent("k3UGhpbVUmHQIaw52l3T").observe(viewLifecycleOwner, ::deleteResponse)
+        }
+
+    }
+
+    private fun deleteResponse(resource: Resource<Unit>?) {
+
+        when (resource) {
+            is Resource.Success -> {
+                loadingState(false)
+                Snackbar.make(binding.root, "Event berhasil di hapus", Snackbar.LENGTH_LONG)
+                    .show()
+            }
+            is Resource.Loading -> {
+                loadingState(true)
+            }
+
+            is Resource.Error -> {
+                loadingState(false)
+                Snackbar.make(binding.root, resource.message.toString(), Snackbar.LENGTH_LONG)
+                    .show()
+            }
+
+        }
     }
 
     private fun setMyEvent(resource: Resource<List<Event>>?) {

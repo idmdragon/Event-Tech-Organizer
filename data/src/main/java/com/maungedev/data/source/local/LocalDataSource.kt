@@ -51,4 +51,7 @@ class LocalDataSource(
     fun getTotalView(): Int =
         eventDao.selectTotalView()
 
+    suspend fun deleteEvent(id: String) =
+        eventDao.deleteEvent(id)
+
 }

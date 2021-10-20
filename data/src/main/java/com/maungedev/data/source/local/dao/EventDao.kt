@@ -46,4 +46,6 @@ interface EventDao {
     @Query("SELECT SUM(numbersOfView) FROM Event")
     fun selectTotalView(): Int
 
+    @Query("DELETE FROM Event WHERE uid = :id")
+    suspend fun deleteEvent(id: String)
 }

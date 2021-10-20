@@ -1,6 +1,7 @@
 package com.maungedev.data.repository
 
 import android.net.Uri
+import com.maungedev.data.helper.NetworkBoundDelete
 import com.maungedev.data.helper.NetworkBoundRequest
 import com.maungedev.data.helper.NetworkBoundResource
 import com.maungedev.data.mapper.*
@@ -151,4 +152,14 @@ class EventRepositoryImpl(
 
         }.asFlow()
 
+    override fun deleteEvent(id: String): Flow<Resource<Unit>> =
+        object : NetworkBoundDelete(){
+        override suspend fun deleteFromNetwork(): Flow<FirebaseResponse<Unit>> =
+            remote.deleteEvent(id)
+
+        override suspend fun onDeleteSuccess() {
+            local.deleteEvent(id)
+        }
+
+    }.asFlow()
 }

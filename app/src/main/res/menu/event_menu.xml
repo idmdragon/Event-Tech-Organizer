@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/edit_event"
+        android:icon="@drawable/ic_event"
+        android:title="@string/edit_event" />
+
+    <item
+        android:id="@+id/delete_event"
+        android:icon="@drawable/ic_insight"
+        android:title="@string/delete_event" />
+
+</menu>

@@ -39,4 +39,8 @@
     <string name="subtitle_event_seen">Jumlah event dilihat</string>
     <string name="subtitle_event_opened">Jumlah link pendaftaran di buka</string>
     <string name="cd_event_poster">Poster event</string>
+    <string name="edit_event">Sunting Event</string>
+    <string name="delete_event">Hapus Event</string>
+    <string name="dialog_title_delete">Hapus Event</string>
+    <string name="desc_dialog_delete">Apakah anda yakin akan menghapus event %s</string>
 </resources>

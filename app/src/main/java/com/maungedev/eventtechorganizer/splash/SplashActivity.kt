@@ -9,6 +9,7 @@ import com.google.firebase.auth.ktx.auth
 import com.google.firebase.ktx.Firebase
 import com.maungedev.eventtechorganizer.R
 import com.maungedev.eventtechorganizer.constant.PageNameConstant.AUTHENTICATION_PAGE
+import com.maungedev.eventtechorganizer.main.MainActivity
 
 @SuppressLint("CustomSplashScreen")
 class SplashActivity : AppCompatActivity() {
@@ -18,7 +19,7 @@ class SplashActivity : AppCompatActivity() {
 
         Handler(mainLooper).postDelayed({
             if(isUserAlreadyHere()){
-                startActivity(Intent(this@SplashActivity, Class.forName(AUTHENTICATION_PAGE))).also {
+                startActivity(Intent(this@SplashActivity,MainActivity::class.java)).also {
                     finishAffinity()
                 }
             }else{

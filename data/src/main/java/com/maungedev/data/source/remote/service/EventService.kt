@@ -7,11 +7,8 @@ import com.maungedev.data.source.remote.response.CompetitionCategoryResponse
 import com.maungedev.data.source.remote.response.ConferenceCategoryResponse
 import com.maungedev.data.source.remote.response.EventResponse
 import com.maungedev.domain.model.Event
-import kotlinx.coroutines.flow.Flow
-import kotlinx.coroutines.flow.emitAll
-import kotlinx.coroutines.flow.first
-import kotlinx.coroutines.flow.flow
-
+import kotlinx.coroutines.flow.*
+import com.maungedev.data.helper.first
 class EventService : FirebaseService() {
 
     fun insertEvent(event: Event, imageUri: Uri): Flow<FirebaseResponse<EventResponse>> =
@@ -57,8 +54,12 @@ class EventService : FirebaseService() {
         }
 
 
-    fun getMyEvents(ids: List<String>):Flow<FirebaseResponse<List<EventResponse>>> =
-        getDocumentsWhereIds(FirebaseConstant.FirebaseCollection.EVENT_COLLECTION,FirebaseConstant.Field.UID,ids)
+    fun getMyEvents(ids: List<String>): Flow<FirebaseResponse<List<EventResponse>>> =
+        getDocumentsWhereIds(
+            FirebaseConstant.FirebaseCollection.EVENT_COLLECTION,
+            FirebaseConstant.Field.UID,
+            ids
+        )
 
     fun getAllConferenceCategory(): Flow<FirebaseResponse<List<ConferenceCategoryResponse>>> =
         getCollection(FirebaseConstant.FirebaseCollection.CONFERENCE_CATEGORY_COLLECTION)
@@ -67,7 +68,7 @@ class EventService : FirebaseService() {
         getCollection(FirebaseConstant.FirebaseCollection.COMPETITION_CATEGORY_COLLECTION)
 
     fun getEventById(id: String): Flow<FirebaseResponse<EventResponse>> =
-        getDocument(FirebaseConstant.FirebaseCollection.EVENT_COLLECTION,id)
+        getDocument(FirebaseConstant.FirebaseCollection.EVENT_COLLECTION, id)
 
     fun updateEvent(event: Event): Flow<FirebaseResponse<EventResponse>> =
         setDocument(
@@ -75,4 +76,22 @@ class EventService : FirebaseService() {
             event.uid,
             event
         )
+
+    fun deleteEvent(id: String): Flow<FirebaseResponse<Unit>> =
+        flow {
+            deleteDocument(FirebaseConstant.FirebaseCollection.EVENT_COLLECTION, id).first<Unit,Unit>(this){
+                removeArrayStringValueAtDocField(
+                    FirebaseConstant.FirebaseCollection.USER,
+                    getCurrentUserId(),
+                    FirebaseConstant.Field.MY_EVENT,
+                    id
+                )
+                emitAll(deleteFile(FirebaseConstant.FirebaseCollection.EVENT_COLLECTION,id))
+
+            }
+        }.catch {
+            emit(FirebaseResponse.Error(it.message.toString()))
+        }
+
+
 }
