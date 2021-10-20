@@ -10,17 +10,12 @@ import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.android.material.snackbar.Snackbar
 import com.maungedev.domain.model.Event
-import com.maungedev.domain.model.User
 import com.maungedev.domain.utils.Resource
 import com.maungedev.event.databinding.FragmentHomeBinding
 import com.maungedev.event.di.eventModule
 import com.maungedev.eventtechorganizer.adapter.EventLayoutAdapter
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.launch
 import org.koin.android.viewmodel.ext.android.viewModel
 import org.koin.core.context.loadKoinModules
-import org.koin.core.context.unloadKoinModules
 
 class HomeFragment : Fragment() {
 

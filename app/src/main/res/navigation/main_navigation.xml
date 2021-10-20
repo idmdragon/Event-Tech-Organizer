@@ -22,7 +22,7 @@
         tools:layout="@layout/fragment_home" />
     <fragment
         android:id="@+id/navigation_insight"
-        android:name="com.maungedev.insight.InsightFragment"
+        android:name="com.maungedev.insight.ui.InsightFragment"
         android:label="fragment_insight"
         tools:layout="@layout/fragment_insight" />
 

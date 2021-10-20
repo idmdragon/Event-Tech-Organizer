@@ -31,6 +31,15 @@ class EventRepositoryImpl(
     private val remote: RemoteDataSource
 ) : EventRepository {
 
+    override fun getTotalEvent(): Int =
+        local.getTotalEvent()
+
+    override fun getTotalRegistrationClick(): Int =
+        local.getTotalRegistrationClick()
+
+    override fun getTotalView(): Int =
+        local.getTotalView()
+
     override fun getMyEvents(ids: List<String>): Flow<Resource<List<Event>>> =
         object : NetworkBoundResource<List<Event>, List<EventResponse>>() {
             override fun loadFromDB(): Flow<List<Event>?> =

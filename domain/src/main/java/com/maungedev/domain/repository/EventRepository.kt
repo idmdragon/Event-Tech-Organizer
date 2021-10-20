@@ -16,4 +16,7 @@ interface EventRepository {
     fun getCurrentUser(): Flow<Resource<User>>
     fun getCurrentUserId(): String
     fun getUser(id: String): Flow<Resource<User>>
+    fun getTotalEvent():Int
+    fun getTotalRegistrationClick(): Int
+    fun getTotalView(): Int
 }

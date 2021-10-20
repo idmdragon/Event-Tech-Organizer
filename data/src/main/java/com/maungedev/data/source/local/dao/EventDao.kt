@@ -34,4 +34,13 @@ interface EventDao {
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insertEvents(listEvent: List<EventEntity>)
 
+    @Query("SELECT COUNT(eventName) FROM Event")
+    fun selectTotalEvent(): Int
+
+    @Query("SELECT SUM(numbersOfRegistrationClick) FROM Event")
+    fun selectTotalRegistrationClick(): Int
+
+    @Query("SELECT SUM(numbersOfView) FROM Event")
+    fun selectTotalView(): Int
+
 }

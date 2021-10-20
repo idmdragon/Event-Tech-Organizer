@@ -8,5 +8,4 @@ class HomeViewModel(private val useCase: EventUseCase) : ViewModel() {
 
     fun getAllMyEvent(ids: List<String>) = useCase.getMyEvents(ids).asLiveData()
 
-
 }

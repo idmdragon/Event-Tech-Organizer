@@ -39,4 +39,13 @@ class LocalDataSource(
     fun selectAllMyEvents(): Flow<List<EventEntity>> =
         eventDao.selectAllMyEvents()
 
+    fun getTotalEvent(): Int =
+        eventDao.selectTotalEvent()
+
+    fun getTotalRegistrationClick(): Int =
+        eventDao.selectTotalRegistrationClick()
+
+    fun getTotalView(): Int =
+        eventDao.selectTotalView()
+
 }
