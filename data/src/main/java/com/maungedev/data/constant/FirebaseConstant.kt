@@ -12,6 +12,7 @@ object FirebaseConstant {
     object Field{
         const val MY_EVENT = "myEvent"
         const val UID = "uid"
+        const val USERNAME = "username"
         const val ORGANIZER_UID = "organizerUid"
     }
 }

@@ -7,6 +7,6 @@ import com.maungedev.domain.usecase.EventUseCase
 class HomeViewModel(private val useCase: EventUseCase) : ViewModel() {
 
     fun getAllMyEvent(ids: List<String>) = useCase.getMyEvents(ids).asLiveData()
-
+    fun getCurrentUser() = useCase.getCurrentUser().asLiveData()
     fun deleteEvent(id: String) = useCase.deleteEvent(id).asLiveData()
 }

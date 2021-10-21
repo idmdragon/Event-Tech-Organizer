@@ -84,6 +84,24 @@ abstract class FirebaseService {
             emit(FirebaseResponse.Error(it.message.toString()))
         }.flowOn(Dispatchers.IO)
 
+    inline fun <RequestType, reified ResponseType> updateFieldInDocument(
+        collection: String,
+        docId: String,
+        fieldName: String,
+        value: String
+    ): Flow<FirebaseResponse<ResponseType>> =
+        flow {
+            firestore
+                .collection(collection)
+                .document(docId)
+                .update(fieldName,value)
+                .await()
+
+            emitAll(getDocument<ResponseType>(collection, docId))
+        }.catch {
+            emit(FirebaseResponse.Error(it.message.toString()))
+        }.flowOn(Dispatchers.IO)
+
     inline fun <reified ResponseType> getDocument(
         collection: String,
         docId: String

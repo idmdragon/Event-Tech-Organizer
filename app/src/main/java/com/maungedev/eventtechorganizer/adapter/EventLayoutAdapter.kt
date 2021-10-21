@@ -4,16 +4,13 @@ import android.content.Context
 import android.content.Intent
 import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.MenuItem
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import android.widget.TextView
-import android.widget.Toast
 import androidx.appcompat.widget.PopupMenu
-import androidx.core.content.ContentProviderCompat.requireContext
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.resource.bitmap.CenterCrop
@@ -31,6 +28,9 @@ class EventLayoutAdapter(private val context: Context) :
 
     private val events = arrayListOf<Event>()
 
+    var onItemClick: ((Event) -> Unit)? = null
+
+
     fun setItems(items: List<Event>) {
         this.events.clear()
         this.events.addAll(items)
@@ -47,7 +47,6 @@ class EventLayoutAdapter(private val context: Context) :
 
     override fun onBindViewHolder(holder: EventLayoutAdapter.ViewHolder, position: Int) {
         holder.bind(events[position])
-
     }
 
     override fun getItemCount() = events.size
@@ -67,7 +66,7 @@ class EventLayoutAdapter(private val context: Context) :
                     .into(ivPoster)
 
                 btnMenu.setOnClickListener {
-                    showMenu(it, R.menu.event_menu, itemView.context, item.uid, item.eventName)
+                    showMenu(it, R.menu.event_menu, itemView.context, item)
 
                 }
             }
@@ -78,8 +77,7 @@ class EventLayoutAdapter(private val context: Context) :
             view: View,
             optionMenu: Int,
             context: Context,
-            eventID: String,
-            eventName: String
+            event: Event,
         ) {
             val popup = PopupMenu(context, view)
             popup.menuInflater.inflate(optionMenu, popup.menu)
@@ -89,23 +87,22 @@ class EventLayoutAdapter(private val context: Context) :
                 if (menuItem.itemId == R.id.edit_event) {
                     context.startActivity(
                         Intent(itemView.context, Class.forName(EDIT_EVENT_PAGE)).putExtra(
-                            ExtraNameConstant.EVENT_UID, eventID
+                            ExtraNameConstant.EVENT_UID, event.uid
                         )
                     )
                 } else if (menuItem.itemId == R.id.delete_event) {
                     val materialBuilder = MaterialAlertDialogBuilder(itemView.context).create()
                     val inflater: View =
                         LayoutInflater.from(context).inflate(R.layout.dialog_delete, null)
-
                     val btnDelete: Button = inflater.findViewById(R.id.btn_delete)
                     val btnCancel: Button = inflater.findViewById(R.id.btn_cancel)
                     val deleteDescription: TextView = inflater.findViewById(R.id.tv_desc)
 
                     deleteDescription.text =
-                        context.getString(R.string.desc_dialog_delete, eventName)
+                        context.getString(R.string.desc_dialog_delete, event.eventName)
 
                     btnDelete.setOnClickListener {
-                        Log.d("DELETE", "DELETED")
+                        onItemClick?.invoke(event)
                         materialBuilder.dismiss()
                     }
                     btnCancel.setOnClickListener {
@@ -124,3 +121,4 @@ class EventLayoutAdapter(private val context: Context) :
 
     }
 }
+

@@ -44,9 +44,7 @@ class LoginFragment : Fragment() {
                 val email = tilEmail.editText?.text.toString()
                 val password = tilPassword.editText?.text.toString()
                 viewModel.signIn(email, password).observe(viewLifecycleOwner, ::signInResponse)
-                startActivity(Intent(requireContext(), MainActivity::class.java)).also {
-                    activity?.finish()
-                }
+
 
             }
         }
@@ -59,6 +57,7 @@ class LoginFragment : Fragment() {
                     startActivity(Intent(requireContext(), MainActivity::class.java)).also {
                         activity?.finish()
                     }
+
                 }
                 is Resource.Loading -> {
                     loadingState(true)

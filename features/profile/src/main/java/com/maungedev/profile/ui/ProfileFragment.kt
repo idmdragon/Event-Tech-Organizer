@@ -1,15 +1,16 @@
 package com.maungedev.profile.ui
 
+import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.android.material.snackbar.Snackbar
 import com.maungedev.domain.model.User
 import com.maungedev.domain.utils.Resource
+import com.maungedev.eventtechorganizer.constant.USERNAME
 import com.maungedev.profile.databinding.FragmentProfileBinding
 import com.maungedev.profile.di.profileModule
 import org.koin.android.viewmodel.ext.android.viewModel
@@ -47,8 +48,16 @@ class ProfileFragment : Fragment() {
                             tvEmail.text = user.email
                             tvUsername.text = user.username
                         }
+
+                        tvEditUsername.setOnClickListener {
+                            if (user != null) {
+                                startActivity(Intent(requireContext(),EditUsernameActivity::class.java).putExtra(
+                                    USERNAME,user.username))
+                            }
+                        }
                     }
                 }
+
 
             }
             is Resource.Loading -> {

@@ -8,4 +8,5 @@ class ProfileViewModel(private val useCase: ProfileUseCase) : ViewModel() {
 
     fun getCurrentUser() = useCase.getCurrentUser().asLiveData()
 
+    fun updateUsername(username: String) = useCase.updateUsername(username).asLiveData()
 }

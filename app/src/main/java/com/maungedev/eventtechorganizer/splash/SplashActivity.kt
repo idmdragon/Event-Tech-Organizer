@@ -19,7 +19,7 @@ class SplashActivity : AppCompatActivity() {
 
         Handler(mainLooper).postDelayed({
             if(isUserAlreadyHere()){
-                startActivity(Intent(this@SplashActivity,MainActivity::class.java)).also {
+                startActivity(Intent(this@SplashActivity,Class.forName(AUTHENTICATION_PAGE))).also {
                     finishAffinity()
                 }
             }else{

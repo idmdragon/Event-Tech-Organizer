@@ -10,9 +10,9 @@ fun UserResponse.toEntity(): UserEntity =
     UserEntity(uid,username,email, myEvent)
 
 fun UserEntity.toModel(): User =
-    User(uid, username, email,myEvent)
+    User(uid, username, email, myEvent)
 
-fun Flow<UserEntity>.toFlowModel(): Flow<User> =
+fun Flow<UserEntity>.toFlowModel(): Flow<User> =    
     this.map {
         it.toModel()
     }

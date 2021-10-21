@@ -10,6 +10,7 @@ import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.android.material.snackbar.Snackbar
 import com.maungedev.domain.model.Event
+import com.maungedev.domain.model.User
 import com.maungedev.domain.utils.Resource
 import com.maungedev.eventtechorganizer.adapter.EventInsightAdapter
 import com.maungedev.insight.databinding.FragmentInsightBinding
@@ -39,14 +40,30 @@ class InsightFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        val listEvent = ArrayList<String>()
-        listEvent.add("domUwPDh73JDpDVxEVaq")
-        listEvent.add("aMSG78VLRp58lnQ0I61o")
-        listEvent.add("HBz1YofDoLNqm8m71ydi")
-        viewModel.getAllMyEvent(listEvent).observe(viewLifecycleOwner, ::setInsight)
-        viewModel.getTotalEvent()
-        viewModel.getTotalView()
-        viewModel.getTotalRegistrationClick()
+        viewModel.getCurrentUser().observe(viewLifecycleOwner,::getCurrentUser)
+    }
+
+    private fun getCurrentUser(resource: Resource<User>) {
+        when (resource) {
+
+            is Resource.Success -> {
+                loadingState(false)
+                resource.data?.let {
+                    it.myEvent?.let { events -> viewModel.getAllMyEvent(events).observe(viewLifecycleOwner, ::setInsight) }
+                }
+            }
+            is Resource.Loading -> {
+                loadingState(true)
+            }
+
+            is Resource.Error -> {
+                loadingState(false)
+                Snackbar.make(binding.root, resource.message.toString(), Snackbar.LENGTH_LONG)
+                    .show()
+            }
+
+        }
+
     }
 
     private fun setInsight(resource: Resource<List<Event>>?) {
@@ -61,6 +78,12 @@ class InsightFragment : Fragment() {
                         activity,
                         LinearLayoutManager.VERTICAL, false
                     )
+
+
+                    viewModel.getTotalEvent()
+                    viewModel.getTotalView()
+                    viewModel.getTotalRegistrationClick()
+
 
                     viewModel.apply {
                         totalView.observe(viewLifecycleOwner, {

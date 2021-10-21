@@ -6,3 +6,5 @@ object ExtraNameConstant {
     const val EVENT_COMPETITION = "competition"
     const val EVENT_UID = "uid"
 }
+
+const val USERNAME = "username"

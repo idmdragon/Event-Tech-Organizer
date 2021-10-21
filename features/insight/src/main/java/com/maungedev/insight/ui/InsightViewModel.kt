@@ -20,6 +20,8 @@ class InsightViewModel(private val useCase: InsightUseCase) : ViewModel() {
     private val _totalView = MutableLiveData<Int>()
     val totalView : LiveData<Int> = _totalView
 
+    fun getCurrentUser() = useCase.getCurrentUser().asLiveData()
+
     fun getAllMyEvent(ids: List<String>) = useCase.getMyEvents(ids).asLiveData()
 
     fun getTotalEvent() = CoroutineScope(Dispatchers.IO).launch {
