@@ -1,6 +1,7 @@
 package com.maungedev.event.ui.home
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -38,9 +39,7 @@ class HomeFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-
         viewModel.getCurrentUser().observe(viewLifecycleOwner, ::getCurrentUser)
-
 
     }
 
@@ -69,7 +68,6 @@ class HomeFragment : Fragment() {
     }
 
     private fun deleteResponse(resource: Resource<Unit>?) {
-
         when (resource) {
             is Resource.Success -> {
                 loadingState(false)
@@ -92,19 +90,23 @@ class HomeFragment : Fragment() {
     private fun setMyEvent(resource: Resource<List<Event>>?) {
         when (resource) {
             is Resource.Success -> {
+
                 loadingState(false)
                 adapter = EventLayoutAdapter(requireContext())
-                resource.data?.let { adapter.setItems(it) }
+                resource.data?.let {
+                    adapter.setItems(it)
+                    binding.layoutEmpty.isVisible = it.isEmpty()
+                }
                 binding.rvHome.adapter = adapter
                 binding.rvHome.layoutManager = LinearLayoutManager(
                     activity,
                     LinearLayoutManager.VERTICAL, false
                 )
+                binding.layoutEmpty.isVisible = false
                 adapter.onItemClick = { event ->
                     viewModel.deleteEvent(event.uid)
                         .observe(viewLifecycleOwner, ::deleteResponse)
                 }
-
 
             }
             is Resource.Loading -> {
@@ -113,8 +115,14 @@ class HomeFragment : Fragment() {
 
             is Resource.Error -> {
                 loadingState(false)
-                Snackbar.make(binding.root, resource.message.toString(), Snackbar.LENGTH_LONG)
-                    .show()
+
+                if (resource.message.toString() == "Invalid Query. A non-empty array is required for 'in' filters.") {
+                    binding.layoutEmpty.isVisible = true
+                } else {
+                    Snackbar.make(binding.root, resource.message.toString(), Snackbar.LENGTH_LONG)
+                        .show()
+                }
+
             }
         }
     }

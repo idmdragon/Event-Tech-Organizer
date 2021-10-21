@@ -15,6 +15,9 @@
 
     <application>
         <activity
+            android:name=".ui.reset_password.ResetPasswordActivity"
+            android:exported="true" />
+        <activity
             android:name=".ui.AuthActivity"
             android:exported="true" />
     </application>

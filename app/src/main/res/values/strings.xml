@@ -44,4 +44,8 @@
     <string name="dialog_title_delete">Hapus Event</string>
     <string name="desc_dialog_delete">Apakah anda yakin akan menghapus event %s</string>
     <string name="text_save_changes">Simpan Perubahan</string>
+    <string name="text_send_reset">Kirim Reset Password</string>
+    <string name="cd_ilu_empty">ilustration empty event</string>
+    <string name="text_empty_event">Kamu belum memiliki Event</string>
+    <string name="subtitle_empty_event">Yuk, buat di halaman tambah event</string>
 </resources>

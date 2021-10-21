@@ -38,15 +38,11 @@ class RegisterFragment : Fragment() {
         with(binding) {
 
             activity.apply {
-
                 btnRegister.setOnClickListener {
                     val email = tilEmail.editText?.text.toString()
                     val password = tilPassword.editText?.text.toString()
                     val username = tilUsername.editText?.text.toString()
 
-                    startActivity(Intent(requireContext(), MainActivity::class.java)).also {
-                        activity?.finish()
-                    }
                     viewModel.signUp(
                         email,
                         password,
@@ -93,6 +89,7 @@ class RegisterFragment : Fragment() {
 
             is Resource.Error -> {
                 loadingState(false)
+
                 Snackbar.make(binding.root,resource.message.toString(),Snackbar.LENGTH_LONG).show()
             }
 
