@@ -1,10 +1,12 @@
 package com.maungedev.data.repository
 
+import com.maungedev.data.helper.NetworkBoundRequest
 import com.maungedev.data.helper.NetworkBoundResource
 import com.maungedev.data.mapper.*
 import com.maungedev.data.source.local.LocalDataSource
 import com.maungedev.data.source.remote.FirebaseResponse
 import com.maungedev.data.source.remote.RemoteDataSource
+import com.maungedev.data.source.remote.response.EventResponse
 import com.maungedev.data.source.remote.response.UserResponse
 import com.maungedev.domain.model.User
 import com.maungedev.domain.repository.UserRepository
@@ -43,9 +45,16 @@ class UserRepositoryImpl(
             }
         }
 
-    override fun updateUsername(username: String): Flow<Resource<Unit>> {
-        TODO("Not yet implemented")
-    }
+    override fun updateUsername(username: String): Flow<Resource<Unit>> =
+        object : NetworkBoundRequest<UserResponse>() {
+
+            override suspend fun createCall(): Flow<FirebaseResponse<UserResponse>> =
+                remote.updateUsername(username)
+
+            override suspend fun saveCallResult(data: UserResponse) =
+                local.insertUser(data.toEntity())
+
+        }.asFlow()
 
     override fun resetPassword(email: String): Flow<Resource<Unit>> {
         TODO("Not yet implemented")

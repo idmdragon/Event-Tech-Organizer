@@ -47,5 +47,8 @@ class RemoteDataSource(
     fun deleteEvent(id: String): Flow<FirebaseResponse<Unit>> =
         eventService.deleteEvent(id)
 
+    fun updateUsername(username: String): Flow<FirebaseResponse<UserResponse>> =
+        userService.updateUsername(username)
+
 
 }
