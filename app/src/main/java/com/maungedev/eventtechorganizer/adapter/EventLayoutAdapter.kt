@@ -22,6 +22,7 @@ import com.maungedev.eventtechorganizer.R
 import com.maungedev.eventtechorganizer.constant.ExtraNameConstant
 import com.maungedev.eventtechorganizer.constant.PageNameConstant.EDIT_EVENT_PAGE
 import com.maungedev.eventtechorganizer.databinding.ItemEventBinding
+import com.maungedev.eventtechorganizer.utils.DateConverter
 
 class EventLayoutAdapter(private val context: Context) :
     RecyclerView.Adapter<EventLayoutAdapter.ViewHolder>() {
@@ -57,7 +58,7 @@ class EventLayoutAdapter(private val context: Context) :
             with(binding) {
                 tvEventCategory.text = item.eventCategory
                 tvEventTitle.text = item.eventName
-                tvEventDate.text = item.date
+                tvEventDate.text = DateConverter.convertMillisToString(item.date)
                 Glide.with(itemView.context)
                     .load(item.eventCover)
                     .transform(CenterCrop(), RoundedCorners(8))

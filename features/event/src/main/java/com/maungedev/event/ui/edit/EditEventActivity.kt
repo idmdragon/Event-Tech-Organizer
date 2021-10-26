@@ -23,6 +23,7 @@ import com.maungedev.event.databinding.ActivityEditEventBinding
 import com.maungedev.event.di.eventModule
 import com.maungedev.eventtechorganizer.constant.ExtraNameConstant
 import com.maungedev.eventtechorganizer.main.MainActivity
+import com.maungedev.eventtechorganizer.utils.DateConverter
 import org.koin.android.viewmodel.ext.android.viewModel
 import org.koin.core.context.loadKoinModules
 import org.koin.core.context.unloadKoinModules
@@ -74,7 +75,7 @@ class EditEventActivity : AppCompatActivity() {
             tilEventName.editText?.setText(data.eventName)
             tilEventCategory.editText?.setText(data.eventCategory)
             tilEventPrice.editText?.setText(data.price.toString())
-            tilEventDate.editText?.setText(data.date)
+            tilEventDate.editText?.setText(DateConverter.convertMillisToString(data.date))
             tilEventTime.editText?.setText(data.time)
             tilEventLocation.editText?.setText(data.location)
             tilLinkRegistration.editText?.setText(data.linkRegistration)
@@ -176,7 +177,7 @@ class EditEventActivity : AppCompatActivity() {
                     eventType = data.eventType,
                     eventCategory =  tilEventCategory.editText?.text.toString(),
                     price = tilEventPrice.editText?.text.toString().toLong(),
-                    date =  tilEventDate.editText?.text.toString(),
+                    date =  DateConverter.convertStringToMillis(tilEventDate.editText?.text.toString()),
                     time =  tilEventTime.editText?.text.toString(),
                     location =  tilEventLocation.editText?.text.toString(),
                     linkRegistration =  tilLinkRegistration.editText?.text.toString(),
@@ -185,7 +186,6 @@ class EditEventActivity : AppCompatActivity() {
                     eventCover =  data.eventCover,
                     numbersOfView =  data.numbersOfView,
                     numbersOfRegistrationClick =  data.numbersOfRegistrationClick,
-                    favoriteBy =  data.favoriteBy,
                     organizer =  data.organizer,
                     organizerUid =  data.organizerUid,
                 )

@@ -45,7 +45,7 @@
         <entry key="features/event/src/main/res/drawable/ilu_competition.xml" value="0.18958333333333333" />
         <entry key="features/event/src/main/res/drawable/ilu_conference.xml" value="0.18958333333333333" />
         <entry key="features/event/src/main/res/layout/a.xml" value="0.2609375" />
-        <entry key="features/event/src/main/res/layout/activity_add_event.xml" value="0.33" />
+        <entry key="features/event/src/main/res/layout/activity_add_event.xml" value="0.22" />
         <entry key="features/event/src/main/res/layout/activity_edit_event.xml" value="0.15" />
         <entry key="features/event/src/main/res/layout/category_list_dropdown_menu.xml" value="0.32135416666666666" />
         <entry key="features/event/src/main/res/layout/fragment_add_event.xml" value="0.33" />

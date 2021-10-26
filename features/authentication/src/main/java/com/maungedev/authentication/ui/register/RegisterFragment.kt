@@ -44,9 +44,7 @@ class RegisterFragment : Fragment() {
                     val password = tilPassword.editText?.text.toString()
                     val username = tilUsername.editText?.text.toString()
 
-                    startActivity(Intent(requireContext(), MainActivity::class.java)).also {
-                        activity?.finish()
-                    }
+
                     viewModel.signUp(
                         email,
                         password,

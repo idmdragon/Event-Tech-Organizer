@@ -22,7 +22,7 @@ class AddEventViewModel(private val useCase: EventUseCase) : ViewModel() {
         this.imageUri.value = uri
     }
 
-    fun setCurrenctUser(user: User) {
+    fun setCurrentUser(user: User) {
         _user.postValue(user)
     }
 

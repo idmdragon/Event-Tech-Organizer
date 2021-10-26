@@ -7,7 +7,7 @@ data class EventResponse(
     val eventType: String="",
     val eventCategory: String="",
     val price: Long=0,
-    val date: String="",
+    val date: Long= 0,
     val time: String="",
     val location: String="",
     val linkRegistration: String="",
@@ -16,7 +16,6 @@ data class EventResponse(
     val eventCover: String="",
     val numbersOfView: Int=0,
     val numbersOfRegistrationClick: Int=0,
-    var favoriteBy: List<String>?= listOf(),
     val organizer: String ="",
     val organizerUid: String =""
 )

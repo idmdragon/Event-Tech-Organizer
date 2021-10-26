@@ -94,6 +94,17 @@ class EventRepositoryImpl(
 
         }.asFlow()
 
+    override fun deleteEvent(id: String): Flow<Resource<Unit>> =
+        object : NetworkBoundDelete(){
+            override suspend fun deleteFromNetwork(): Flow<FirebaseResponse<Unit>> =
+                remote.deleteEvent(id)
+
+            override suspend fun onDeleteSuccess() {
+                local.deleteEvent(id)
+            }
+
+        }.asFlow()
+
     override fun getConferenceCategory(): Flow<Resource<List<ConferenceCategory>>> =
         object :
             NetworkBoundResource<List<ConferenceCategory>, List<ConferenceCategoryResponse>>() {
@@ -152,14 +163,5 @@ class EventRepositoryImpl(
 
         }.asFlow()
 
-    override fun deleteEvent(id: String): Flow<Resource<Unit>> =
-        object : NetworkBoundDelete(){
-        override suspend fun deleteFromNetwork(): Flow<FirebaseResponse<Unit>> =
-            remote.deleteEvent(id)
 
-        override suspend fun onDeleteSuccess() {
-            local.deleteEvent(id)
-        }
-
-    }.asFlow()
 }

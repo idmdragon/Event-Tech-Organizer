@@ -4,6 +4,7 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.provider.MediaStore
+import android.util.Log
 import android.widget.*
 import androidx.core.view.isVisible
 import com.bumptech.glide.Glide
@@ -25,6 +26,7 @@ import com.maungedev.eventtechorganizer.constant.ExtraNameConstant.EVENT_COMPETI
 import com.maungedev.eventtechorganizer.constant.ExtraNameConstant.EVENT_CONFERENCE
 import com.maungedev.eventtechorganizer.constant.ExtraNameConstant.EVENT_TYPE
 import com.maungedev.eventtechorganizer.main.MainActivity
+import com.maungedev.eventtechorganizer.utils.DateConverter
 import org.koin.core.context.loadKoinModules
 import org.koin.android.viewmodel.ext.android.viewModel
 import org.koin.core.context.unloadKoinModules
@@ -52,7 +54,7 @@ class AddEventActivity : AppCompatActivity() {
         typeEvent(intent.getStringExtra(EVENT_TYPE) as String)
         viewModel.getCurrentUser().observe(this, {
             if (it.data != null) {
-                viewModel.setCurrenctUser(it.data as User)
+                viewModel.setCurrentUser(it.data as User)
             }
         })
 
@@ -142,14 +144,14 @@ class AddEventActivity : AppCompatActivity() {
         with(binding) {
 
             viewModel.user.observe(this@AddEventActivity, { user ->
-
+            Log.d("TESSS","When add Event date -> ${ DateConverter.convertStringToMillis(tilEventDate.editText?.text.toString())}")
                 val event = Event(
                     "",
                     tilEventName.editText?.text.toString(),
                     intent.getStringExtra(EVENT_TYPE).toString(),
                     tilEventCategory.editText?.text.toString(),
                     tilEventPrice.editText?.text.toString().toLong(),
-                    tilEventDate.editText?.text.toString(),
+                    DateConverter.convertStringToMillis(tilEventDate.editText?.text.toString()),
                     tilEventTime.editText?.text.toString(),
                     tilEventLocation.editText?.text.toString(),
                     tilLinkRegistration.editText?.text.toString(),
@@ -158,7 +160,6 @@ class AddEventActivity : AppCompatActivity() {
                     "",
                     0,
                     0,
-                    listOf(),
                     user.username,
                     user.uid
                 )
@@ -284,7 +285,7 @@ class AddEventActivity : AppCompatActivity() {
         val builderEventDate = MaterialDatePicker.Builder.datePicker().build()
         builderEventDate.show(supportFragmentManager, builderEventDate.toString())
         builderEventDate.addOnPositiveButtonClickListener {
-            binding.tilEventDate.editText?.setText(builderEventDate.headerText)
+            binding.tilEventDate.editText?.setText(DateConverter.convertMillisToString(it))
         }
     }
 

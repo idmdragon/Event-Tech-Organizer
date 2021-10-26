@@ -15,7 +15,7 @@ data class EventEntity(
     val eventType: String,
     val eventCategory: String,
     val price: Long,
-    val date: String,
+    val date: Long,
     val time: String,
     val location: String,
     val linkRegistration: String,
@@ -24,7 +24,6 @@ data class EventEntity(
     val eventCover: String,
     val numbersOfView: Int,
     val numbersOfRegistrationClick: Int,
-    var favoriteBy: List<String>?,
     val organizer: String,
     val organizerUid: String
 )

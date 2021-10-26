@@ -23,7 +23,6 @@ fun EventResponse.toEntity(): EventEntity =
         eventCover,
         numbersOfView,
         numbersOfRegistrationClick,
-        favoriteBy,
         organizer,
         organizerUid
     )
@@ -44,7 +43,6 @@ fun EventEntity.toModel(): Event =
         eventCover,
         numbersOfView,
         numbersOfRegistrationClick,
-        favoriteBy,
         organizer,
         organizerUid
     )
