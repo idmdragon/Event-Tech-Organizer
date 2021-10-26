@@ -10,6 +10,8 @@ import com.maungedev.domain.model.User
 import com.maungedev.domain.repository.AuthRepository
 import com.maungedev.domain.utils.Resource
 import kotlinx.coroutines.flow.Flow
+import kotlinx.coroutines.flow.emitAll
+import kotlinx.coroutines.flow.flow
 
 class AuthRepositoryImpl(
     private val local: LocalDataSource,
@@ -19,7 +21,7 @@ class AuthRepositoryImpl(
         object : NetworkBoundRequest<UserResponse>() {
 
             override suspend fun createCall(): Flow<FirebaseResponse<UserResponse>> =
-                remote.signUp(email,password,user)
+                remote.signUp(email, password, user)
 
             override suspend fun saveCallResult(data: UserResponse) =
                 local.insertUser(data.toEntity())
@@ -30,10 +32,17 @@ class AuthRepositoryImpl(
         object : NetworkBoundRequest<UserResponse>() {
 
             override suspend fun createCall(): Flow<FirebaseResponse<UserResponse>> =
-                remote.signIn(email,password)
+                remote.signIn(email, password)
 
             override suspend fun saveCallResult(data: UserResponse) =
                 local.insertUser(data.toEntity())
 
         }.asFlow()
+
+    override fun resetPassword(email: String): Flow<Resource<Unit>> =
+        flow {
+            FirebaseResponse.Success(remote.resetPassword(email))
+        }
+
+
 }

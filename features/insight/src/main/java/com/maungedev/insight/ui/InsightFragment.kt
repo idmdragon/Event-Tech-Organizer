@@ -51,6 +51,7 @@ class InsightFragment : Fragment() {
                 resource.data?.let {
                     it.myEvent?.let { events -> viewModel.getAllMyEvent(events).observe(viewLifecycleOwner, ::setInsight) }
                 }
+
             }
             is Resource.Loading -> {
                 loadingState(true)
@@ -60,6 +61,7 @@ class InsightFragment : Fragment() {
                 loadingState(false)
                 Snackbar.make(binding.root, resource.message.toString(), Snackbar.LENGTH_LONG)
                     .show()
+
             }
 
         }
@@ -70,9 +72,13 @@ class InsightFragment : Fragment() {
         when (resource) {
             is Resource.Success -> {
                 with(binding) {
+
                     loadingState(false)
                     adapter = EventInsightAdapter(requireContext())
-                    resource.data?.let { adapter.setItems(it) }
+                    resource.data?.let {
+                        binding.rootLayout.isVisible = it.isNotEmpty()
+                        binding.layoutEmpty.isVisible = it.isEmpty()
+                        adapter.setItems(it) }
                     rvInsight.adapter = adapter
                     rvInsight.layoutManager = LinearLayoutManager(
                         activity,
@@ -107,8 +113,14 @@ class InsightFragment : Fragment() {
 
             is Resource.Error -> {
                 loadingState(false)
-                Snackbar.make(binding.root, resource.message.toString(), Snackbar.LENGTH_LONG)
-                    .show()
+                if (resource.message.toString() == "Invalid Query. A non-empty array is required for 'in' filters.") {
+                    binding.layoutEmpty.isVisible = true
+                    binding.rootLayout.isVisible = false
+                } else {
+                    Snackbar.make(binding.root, resource.message.toString(), Snackbar.LENGTH_LONG)
+                        .show()
+                }
+
             }
         }
     }

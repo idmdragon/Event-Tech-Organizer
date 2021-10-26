@@ -62,5 +62,10 @@ class AuthService : FirebaseService() {
             }
         }
 
+    fun resetPassword(email: String): Flow<FirebaseResponse<Unit>> =
+        flow {
+            resetPasswordbyEmail(email)
+        }
+
 
 }

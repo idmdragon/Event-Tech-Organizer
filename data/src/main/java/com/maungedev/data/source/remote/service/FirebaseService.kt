@@ -25,30 +25,21 @@ abstract class FirebaseService {
 
     fun getCurrentUserId() = uid.toString()
 
-    fun generateDocumentId(collection: String): String =
-        firestore.collection(collection).document().id
-
-    inline fun <reified ResponseType> getCollection(
-        collection: String,
-        docId: String,
-        subCollection: String
-    ): Flow<FirebaseResponse<List<ResponseType>>> =
+    fun resetPasswordbyEmail(email: String): Flow<FirebaseResponse<String>> =
         flow {
-            val result = firestore
-                .collection(collection)
-                .document(docId)
-                .collection(subCollection)
-                .get()
-                .await()
-
-            if (result.isEmpty) {
-                emit(FirebaseResponse.Empty)
-            } else {
-                emit(FirebaseResponse.Success(result.toObjects(ResponseType::class.java)))
-            }
+            val resetPassword = auth.sendPasswordResetEmail(email).await()
+                if (resetPassword!= null){
+                    emit(FirebaseResponse.Success(resetPassword.toString()))
+                } else {
+                    emit(FirebaseResponse.Empty)
+                }
         }.catch {
             emit(FirebaseResponse.Error(it.message.toString()))
         }.flowOn(Dispatchers.IO)
+
+    fun generateDocumentId(collection: String): String =
+        firestore.collection(collection).document().id
+
 
     fun createUserWithEmailAndPassword(
         email: String,

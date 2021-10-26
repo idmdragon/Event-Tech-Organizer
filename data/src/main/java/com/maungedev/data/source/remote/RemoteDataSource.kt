@@ -20,6 +20,9 @@ class RemoteDataSource(
     fun signIn(email: String, password: String) =
         authService.signIn(email, password)
 
+    fun resetPassword(email: String) =
+        authService.resetPassword(email)
+
     fun getCurrentUser(id: String): Flow<FirebaseResponse<UserResponse>> =
         userService.getUser(id)
 
@@ -49,6 +52,9 @@ class RemoteDataSource(
 
     fun updateUsername(username: String): Flow<FirebaseResponse<UserResponse>> =
         userService.updateUsername(username)
+
+
+
 
 
 }
