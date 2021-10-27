@@ -49,7 +49,14 @@ class InsightFragment : Fragment() {
             is Resource.Success -> {
                 loadingState(false)
                 resource.data?.let {
-                    it.myEvent?.let { events -> viewModel.getAllMyEvent(events).observe(viewLifecycleOwner, ::setInsight) }
+                    it.myEvent?.let { events ->
+                        if(events.isNotEmpty()){
+                            isListEmpty(false)
+                            viewModel.getAllMyEvent(events).observe(viewLifecycleOwner, ::setInsight)
+                        }else{
+                            isListEmpty(true)
+                        }
+                    }
                 }
 
             }
@@ -113,24 +120,25 @@ class InsightFragment : Fragment() {
 
             is Resource.Error -> {
                 loadingState(false)
-                if (resource.message.toString() == "Invalid Query. A non-empty array is required for 'in' filters.") {
-                    binding.layoutEmpty.isVisible = true
-                    binding.rootLayout.isVisible = false
-                } else {
                     Snackbar.make(binding.root, resource.message.toString(), Snackbar.LENGTH_LONG)
                         .show()
                 }
 
             }
         }
-    }
 
     private fun loadingState(state: Boolean) {
         binding.progressBar.isVisible = state
+    }
+
+    private fun isListEmpty(state: Boolean){
+        binding.layoutEmpty.isVisible = state
+        binding.rootLayout.isVisible != state
     }
 
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null
     }
+
 }

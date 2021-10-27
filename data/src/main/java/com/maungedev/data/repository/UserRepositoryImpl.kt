@@ -49,18 +49,14 @@ class UserRepositoryImpl(
         object : NetworkBoundRequest<UserResponse>() {
 
             override suspend fun createCall(): Flow<FirebaseResponse<UserResponse>> =
-                remote.updateUsername(username)
+                remote.updateUsername(username,getCurrentUserId())
 
             override suspend fun saveCallResult(data: UserResponse) =
                 local.insertUser(data.toEntity())
 
         }.asFlow()
 
-
-
-    override fun logout(): Flow<Resource<Unit>> {
-        TODO("Not yet implemented")
-    }
-
+    override fun logout(): Unit =
+        remote.logout()
 
 }

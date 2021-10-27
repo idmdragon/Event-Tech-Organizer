@@ -1,16 +1,21 @@
 package com.maungedev.profile.ui
 
+import android.annotation.SuppressLint
 import android.content.Intent
 import android.os.Bundle
-import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Button
+import android.widget.TextView
+import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.google.android.material.snackbar.Snackbar
 import com.maungedev.domain.model.User
 import com.maungedev.domain.utils.Resource
+import com.maungedev.eventtechorganizer.constant.PageNameConstant.AUTHENTICATION_PAGE
 import com.maungedev.eventtechorganizer.constant.USERNAME
+import com.maungedev.profile.R
 import com.maungedev.profile.databinding.FragmentProfileBinding
 import com.maungedev.profile.di.profileModule
 import org.koin.android.viewmodel.ext.android.viewModel
@@ -34,6 +39,7 @@ class ProfileFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         viewModel.getCurrentUser().observe(viewLifecycleOwner, ::setProfileView)
+        logout()
     }
 
     private fun setProfileView(resource: Resource<User>?) {
@@ -75,4 +81,15 @@ class ProfileFragment : Fragment() {
     private fun loadingState(b: Boolean) {
 
     }
+
+    private fun logout() {
+        binding.tvLogout.setOnClickListener {
+            viewModel.logout()
+            requireContext().startActivity(Intent(requireContext(), Class.forName(AUTHENTICATION_PAGE))).also {
+                activity?.finishAffinity()
+            }
+        }
+    }
+
+
 }

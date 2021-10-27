@@ -25,7 +25,8 @@
         <entry key="app/src/main/res/font/poppins.xml" value="0.3534218590398366" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.18" />
         <entry key="app/src/main/res/layout/activity_splash.xml" value="0.18" />
-        <entry key="app/src/main/res/layout/dialog_delete.xml" value="0.5" />
+        <entry key="app/src/main/res/layout/dialog_confirmation.xml" value="0.33" />
+        <entry key="app/src/main/res/layout/dialog_delete.xml" value="0.36507936507936506" />
         <entry key="app/src/main/res/layout/fragment_add_event.xml" value="0.22554347826086957" />
         <entry key="app/src/main/res/layout/fragment_dashboard.xml" value="0.22554347826086957" />
         <entry key="app/src/main/res/layout/fragment_home.xml" value="0.25" />
@@ -36,8 +37,7 @@
         <entry key="app/src/main/res/layout/item_insight.xml" value="0.5" />
         <entry key="app/src/main/res/menu/bottom_nav_menu.xml" value="0.321875" />
         <entry key="app/src/main/res/menu/event_menu.xml" value="0.3015625" />
-        <entry key="features/authentication/src/main/res/layout/activity_auth.xml" value="0.21693840579710144" />
-        <entry key="features/authentication/src/main/res/layout/activity_reset_password.xml" value="0.25" />
+        <entry key="features/authentication/src/main/res/layout/activity_auth.xml" value="0.2" />
         <entry key="features/authentication/src/main/res/layout/fragment_login.xml" value="0.25" />
         <entry key="features/authentication/src/main/res/layout/fragment_register.xml" value="0.33" />
         <entry key="features/event/src/main/res/drawable/background_add_event.xml" value="0.14583333333333334" />
@@ -45,15 +45,16 @@
         <entry key="features/event/src/main/res/drawable/ic_iv_add_cover.xml" value="0.3416666666666667" />
         <entry key="features/event/src/main/res/drawable/ilu_competition.xml" value="0.18958333333333333" />
         <entry key="features/event/src/main/res/drawable/ilu_conference.xml" value="0.18958333333333333" />
+        <entry key="features/event/src/main/res/drawable/ilu_empty_list.xml" value="0.1578125" />
         <entry key="features/event/src/main/res/layout/a.xml" value="0.2609375" />
         <entry key="features/event/src/main/res/layout/activity_add_event.xml" value="0.22" />
         <entry key="features/event/src/main/res/layout/activity_edit_event.xml" value="0.15" />
         <entry key="features/event/src/main/res/layout/category_list_dropdown_menu.xml" value="0.32135416666666666" />
         <entry key="features/event/src/main/res/layout/fragment_add_event.xml" value="0.33" />
         <entry key="features/event/src/main/res/layout/fragment_choose_event.xml" value="0.25" />
-        <entry key="features/event/src/main/res/layout/fragment_home.xml" value="0.1" />
+        <entry key="features/event/src/main/res/layout/fragment_home.xml" value="0.33" />
         <entry key="features/insight/src/main/res/layout/a.xml" value="0.3020833333333333" />
-        <entry key="features/insight/src/main/res/layout/fragment_insight.xml" value="0.16" />
+        <entry key="features/insight/src/main/res/layout/fragment_insight.xml" value="0.2" />
         <entry key="features/insight/src/main/res/layout/fragment_profile.xml" value="0.3020833333333333" />
         <entry key="features/profile/src/main/res/layout/aa.xml" value="0.3020833333333333" />
         <entry key="features/profile/src/main/res/layout/activity_edit_username.xml" value="0.32135416666666666" />

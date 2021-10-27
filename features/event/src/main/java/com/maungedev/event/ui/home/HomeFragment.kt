@@ -49,7 +49,12 @@ class HomeFragment : Fragment() {
                 loadingState(false)
                 resource.data?.let {
                     it.myEvent?.let { events ->
-                        viewModel.getAllMyEvent(events).observe(viewLifecycleOwner, ::setMyEvent)
+                            if(events.isNotEmpty()){
+                                isListEmpty(false)
+                                viewModel.getAllMyEvent(events).observe(viewLifecycleOwner, ::setMyEvent)
+                            }else{
+                                isListEmpty(true)
+                            }
                     }
                 }
             }
@@ -115,13 +120,8 @@ class HomeFragment : Fragment() {
 
             is Resource.Error -> {
                 loadingState(false)
-
-                if (resource.message.toString() == "Invalid Query. A non-empty array is required for 'in' filters.") {
-                    binding.layoutEmpty.isVisible = true
-                } else {
                     Snackbar.make(binding.root, resource.message.toString(), Snackbar.LENGTH_LONG)
                         .show()
-                }
 
             }
         }
@@ -131,6 +131,10 @@ class HomeFragment : Fragment() {
         binding.progressBar.isVisible = state
     }
 
+    private fun isListEmpty(state: Boolean){
+        binding.layoutEmpty.isVisible = state
+        binding.rvHome.isVisible != state
+    }
 
     override fun onDestroyView() {
         super.onDestroyView()

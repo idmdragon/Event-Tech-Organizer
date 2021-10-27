@@ -15,6 +15,9 @@ class LocalDataSource(
     suspend fun insertUser(userEntity: UserEntity): Unit =
         userDao.insertUser(userEntity)
 
+    suspend fun clearUser(): Unit =
+        userDao.clear()
+
     fun selectUser(): Flow<UserEntity> =
         userDao.selectCurrentUser()
 

@@ -29,8 +29,8 @@ class RemoteDataSource(
     fun getCurrentUserId(): String =
         userService.getCurrentUserId()
 
-    fun insertEvent(event: Event, imageUri: Uri):Flow<FirebaseResponse<EventResponse>> =
-        eventService.insertEvent(event, imageUri)
+    fun insertEvent(event: Event, imageUri: Uri,userId: String):Flow<FirebaseResponse<EventResponse>> =
+        eventService.insertEvent(event, imageUri,userId)
 
     fun getAllConferenceCategory(): Flow<FirebaseResponse<List<ConferenceCategoryResponse>>> =
         eventService.getAllConferenceCategory()
@@ -47,14 +47,13 @@ class RemoteDataSource(
     fun updateEvent(event: Event): Flow<FirebaseResponse<EventResponse>> =
         eventService.updateEvent(event)
 
-    fun deleteEvent(id: String): Flow<FirebaseResponse<Unit>> =
-        eventService.deleteEvent(id)
+    fun deleteEvent(id: String,userId: String): Flow<FirebaseResponse<Unit>> =
+        eventService.deleteEvent(id,userId)
 
-    fun updateUsername(username: String): Flow<FirebaseResponse<UserResponse>> =
-        userService.updateUsername(username)
+    fun updateUsername(username: String,userId: String): Flow<FirebaseResponse<UserResponse>> =
+        userService.updateUsername(username,userId)
 
-
-
-
+    fun logout(): Unit =
+        userService.logout()
 
 }

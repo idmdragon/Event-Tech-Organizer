@@ -8,5 +8,6 @@
     <string name="subtitle_other">Lainnya</string>
     <string name="text_setting">Pengaturan</string>
     <string name="text_about">Tentang Aplikasi</string>
+    <string name="desc_logout">Apakah kamu yakin akan keluar dari aplikasi?</string>
 
 </resources>

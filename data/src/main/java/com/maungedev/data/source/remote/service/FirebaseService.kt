@@ -263,5 +263,5 @@ abstract class FirebaseService {
             emit(FirebaseResponse.Error(it.message.toString()))
         }.flowOn(Dispatchers.IO)
 
-
+    fun signOut(): Unit = auth.signOut()
 }

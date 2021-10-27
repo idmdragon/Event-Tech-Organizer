@@ -7,5 +7,5 @@ import kotlinx.coroutines.flow.Flow
 interface ProfileUseCase {
     fun getCurrentUser(): Flow<Resource<User>>
     fun updateUsername(username: String): Flow<Resource<Unit>>
-    fun logout(): Flow<Resource<Unit>>
+    fun logout(): Unit
 }

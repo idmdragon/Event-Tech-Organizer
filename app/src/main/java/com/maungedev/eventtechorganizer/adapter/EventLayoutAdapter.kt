@@ -95,7 +95,7 @@ class EventLayoutAdapter(private val context: Context) :
                     val materialBuilder = MaterialAlertDialogBuilder(itemView.context).create()
                     val inflater: View =
                         LayoutInflater.from(context).inflate(R.layout.dialog_delete, null)
-                    val btnDelete: Button = inflater.findViewById(R.id.btn_delete)
+                    val btnDelete: Button = inflater.findViewById(R.id.btn_accept)
                     val btnCancel: Button = inflater.findViewById(R.id.btn_cancel)
                     val deleteDescription: TextView = inflater.findViewById(R.id.tv_desc)
 

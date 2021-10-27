@@ -65,7 +65,7 @@ class EventRepositoryImpl(
                 local.selectUser().toFlowModel()
 
             override fun shouldFetch(data: User?): Boolean =
-                data == null
+                true
 
             override suspend fun createCall(): Flow<FirebaseResponse<UserResponse>> =
                 remote.getCurrentUser(id)
@@ -87,7 +87,7 @@ class EventRepositoryImpl(
         object : NetworkBoundRequest<EventResponse>() {
 
             override suspend fun createCall(): Flow<FirebaseResponse<EventResponse>> =
-                remote.insertEvent(event, imageUri)
+                remote.insertEvent(event, imageUri,getCurrentUserId())
 
             override suspend fun saveCallResult(data: EventResponse) =
                 local.insertEvent(data.toEntity())
@@ -97,7 +97,7 @@ class EventRepositoryImpl(
     override fun deleteEvent(id: String): Flow<Resource<Unit>> =
         object : NetworkBoundDelete(){
             override suspend fun deleteFromNetwork(): Flow<FirebaseResponse<Unit>> =
-                remote.deleteEvent(id)
+                remote.deleteEvent(id,getCurrentUserId())
 
             override suspend fun onDeleteSuccess() {
                 local.deleteEvent(id)

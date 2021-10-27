@@ -48,4 +48,6 @@
     <string name="cd_ilu_empty">ilustration empty event</string>
     <string name="text_empty_event">Kamu belum memiliki Event</string>
     <string name="subtitle_empty_event">Yuk, buat di halaman tambah event</string>
+    <string name="text_cancel">Batalkan</string>
+    <string name="text_accept">Setuju</string>
 </resources>
