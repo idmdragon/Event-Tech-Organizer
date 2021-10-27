@@ -11,7 +11,7 @@ import kotlinx.coroutines.flow.*
 import com.maungedev.data.helper.first
 class EventService : FirebaseService() {
 
-    fun insertEvent(event: Event, imageUri: Uri): Flow<FirebaseResponse<EventResponse>> =
+    fun insertEvent(event: Event, imageUri: Uri, userId: String): Flow<FirebaseResponse<EventResponse>> =
         flow {
             val eventUid = generateDocumentId(FirebaseConstant.FirebaseCollection.EVENT_COLLECTION)
 
@@ -29,7 +29,7 @@ class EventService : FirebaseService() {
                         )
                         addArrayStringValueAtDocField(
                             FirebaseConstant.FirebaseCollection.USER,
-                            getCurrentUserId(),
+                            userId,
                             FirebaseConstant.Field.MY_EVENT,
                             eventUid
                         )
@@ -77,12 +77,12 @@ class EventService : FirebaseService() {
             event
         )
 
-    fun deleteEvent(id: String): Flow<FirebaseResponse<Unit>> =
+    fun deleteEvent(id: String, userId: String): Flow<FirebaseResponse<Unit>> =
         flow {
             deleteDocument(FirebaseConstant.FirebaseCollection.EVENT_COLLECTION, id).first<Unit,Unit>(this){
                 removeArrayStringValueAtDocField(
                     FirebaseConstant.FirebaseCollection.USER,
-                    getCurrentUserId(),
+                    userId,
                     FirebaseConstant.Field.MY_EVENT,
                     id
                 )
