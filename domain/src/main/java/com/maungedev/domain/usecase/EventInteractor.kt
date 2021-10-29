@@ -33,4 +33,7 @@ class EventInteractor(private val eventRepository: EventRepository): EventUseCas
 
     override fun deleteEvent(id: String): Flow<Resource<Unit>> =
         eventRepository.deleteEvent(id)
+
+    override fun refreshUser(): Flow<Resource<Unit>> =
+        eventRepository.refreshUser()
 }

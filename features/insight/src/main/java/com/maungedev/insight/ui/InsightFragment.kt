@@ -40,21 +40,46 @@ class InsightFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        viewModel.getCurrentUser().observe(viewLifecycleOwner,::getCurrentUser)
+        viewModel.getCurrentUser().observe(viewLifecycleOwner, ::getCurrentUser)
+    }
+
+    private fun refreshResponse(resource: Resource<Unit>?) {
+        when (resource) {
+            is Resource.Success -> {
+                loadingState(false)
+                binding.swipeRefresh.isRefreshing = false
+            }
+            is Resource.Loading -> {
+                loadingState(true)
+            }
+
+            is Resource.Error -> {
+                binding.swipeRefresh.isRefreshing = false
+                loadingState(false)
+                Snackbar.make(binding.root, resource.message.toString(), Snackbar.LENGTH_LONG)
+                    .show()
+            }
+        }
+
     }
 
     private fun getCurrentUser(resource: Resource<User>) {
         when (resource) {
-
             is Resource.Success -> {
                 loadingState(false)
                 resource.data?.let {
-                    it.myEvent?.let { events ->
-                        if(events.isNotEmpty()){
-                            isListEmpty(false)
-                            viewModel.getAllMyEvent(events).observe(viewLifecycleOwner, ::setInsight)
-                        }else{
-                            isListEmpty(true)
+                    it.myEvent.let { events ->
+                        if (events != null) {
+                            if (events.isNotEmpty()) {
+                                binding.swipeRefresh.setOnRefreshListener {
+                                    viewModel.refreshEvent(events).observe(viewLifecycleOwner,::refreshResponse)
+                                }
+                                isListEmpty(false)
+                                viewModel.getAllMyEvent(events)
+                                    .observe(viewLifecycleOwner, ::setInsight)
+                            } else {
+                                isListEmpty(true)
+                            }
                         }
                     }
                 }
@@ -85,13 +110,13 @@ class InsightFragment : Fragment() {
                     resource.data?.let {
                         binding.rootLayout.isVisible = it.isNotEmpty()
                         binding.layoutEmpty.isVisible = it.isEmpty()
-                        adapter.setItems(it) }
+                        adapter.setItems(it)
+                    }
                     rvInsight.adapter = adapter
                     rvInsight.layoutManager = LinearLayoutManager(
                         activity,
                         LinearLayoutManager.VERTICAL, false
                     )
-
 
                     viewModel.getTotalEvent()
                     viewModel.getTotalView()
@@ -120,20 +145,20 @@ class InsightFragment : Fragment() {
 
             is Resource.Error -> {
                 loadingState(false)
-                    Snackbar.make(binding.root, resource.message.toString(), Snackbar.LENGTH_LONG)
-                        .show()
-                }
-
+                Snackbar.make(binding.root, resource.message.toString(), Snackbar.LENGTH_LONG)
+                    .show()
             }
+
         }
+    }
 
     private fun loadingState(state: Boolean) {
         binding.progressBar.isVisible = state
     }
 
-    private fun isListEmpty(state: Boolean){
+    private fun isListEmpty(state: Boolean) {
         binding.layoutEmpty.isVisible = state
-        binding.rootLayout.isVisible != state
+        binding.rootLayout.isVisible = !state
     }
 
     override fun onDestroyView() {

@@ -11,4 +11,5 @@ interface InsightUseCase {
     fun getTotalEvent():Int
     fun getTotalRegistrationClick(): Int
     fun getTotalView(): Int
+    fun refreshAllEvent(ids: List<String>): Flow<Resource<Unit>>
 }

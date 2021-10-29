@@ -5,6 +5,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.asLiveData
 import com.maungedev.domain.usecase.InsightUseCase
+import com.maungedev.domain.utils.Resource
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -32,8 +33,10 @@ class InsightViewModel(private val useCase: InsightUseCase) : ViewModel() {
         _totalRegistrationClick.postValue(useCase.getTotalRegistrationClick())
     }
 
-    fun getTotalView()= CoroutineScope(Dispatchers.IO).launch {
+    fun getTotalView() = CoroutineScope(Dispatchers.IO).launch {
         _totalView.postValue(useCase.getTotalView())
     }
+
+    fun refreshEvent(ids: List<String>) :  LiveData<Resource<Unit>> = useCase.refreshAllEvent(ids).asLiveData()
 
 }

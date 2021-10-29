@@ -27,7 +27,7 @@ class RemoteDataSource(
         userService.getUser(id)
 
     fun getCurrentUserId(): String =
-        userService.getCurrentUserId()
+        userService.getCurrentUserId().toString()
 
     fun insertEvent(event: Event, imageUri: Uri,userId: String):Flow<FirebaseResponse<EventResponse>> =
         eventService.insertEvent(event, imageUri,userId)

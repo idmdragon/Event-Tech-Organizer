@@ -41,6 +41,29 @@ class HomeFragment : Fragment() {
 
         viewModel.getCurrentUser().observe(viewLifecycleOwner, ::getCurrentUser)
 
+        binding.swipeRefresh.setOnRefreshListener {
+            viewModel.refreshUser().observe(viewLifecycleOwner,::refreshResponse)
+        }
+    }
+
+    private fun refreshResponse(resource: Resource<Unit>?) {
+        when (resource) {
+            is Resource.Success -> {
+                loadingState(false)
+                binding.swipeRefresh.isRefreshing = false
+            }
+            is Resource.Loading -> {
+                loadingState(true)
+            }
+
+            is Resource.Error -> {
+                binding.swipeRefresh.isRefreshing = false
+                loadingState(false)
+                Snackbar.make(binding.root, resource.message.toString(), Snackbar.LENGTH_LONG)
+                    .show()
+            }
+        }
+
     }
 
     private fun getCurrentUser(resource: Resource<User>) {
@@ -49,12 +72,12 @@ class HomeFragment : Fragment() {
                 loadingState(false)
                 resource.data?.let {
                     it.myEvent?.let { events ->
-                            if(events.isNotEmpty()){
-                                isListEmpty(false)
-                                viewModel.getAllMyEvent(events).observe(viewLifecycleOwner, ::setMyEvent)
-                            }else{
-                                isListEmpty(true)
-                            }
+                        if(events.isNotEmpty()){
+                            isListEmpty(false)
+                            viewModel.getAllMyEvent(events).observe(viewLifecycleOwner, ::setMyEvent)
+                        }else{
+                            isListEmpty(true)
+                        }
                     }
                 }
             }
@@ -133,7 +156,7 @@ class HomeFragment : Fragment() {
 
     private fun isListEmpty(state: Boolean){
         binding.layoutEmpty.isVisible = state
-        binding.rvHome.isVisible != state
+        binding.rvHome.isVisible = !state
     }
 
     override fun onDestroyView() {

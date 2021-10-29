@@ -18,4 +18,6 @@ interface UserDao {
 
     @Query("DELETE FROM User")
     suspend fun clear()
+
+
 }

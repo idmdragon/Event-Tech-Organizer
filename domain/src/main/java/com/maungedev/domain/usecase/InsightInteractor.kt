@@ -22,4 +22,7 @@ class InsightInteractor (private val eventRepository: EventRepository):InsightUs
 
     override fun getTotalView(): Int =
         eventRepository.getTotalView()
+
+    override fun refreshAllEvent(ids: List<String>): Flow<Resource<Unit>> =
+        eventRepository.refreshAllEvent(ids)
 }

@@ -27,6 +27,9 @@ class LocalDataSource(
     suspend fun insertEvents(listEvent: List<EventEntity>): Unit =
         eventDao.insertEvents(listEvent)
 
+    suspend fun clearEvent(): Unit =
+        eventDao.clearEvent()
+
     suspend fun insertConferenceCategory(conferenceCategoryEntity: List<ConferenceCategoryEntity>): Unit =
         eventDao.insertConferenceCategory(conferenceCategoryEntity)
 

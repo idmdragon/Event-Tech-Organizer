@@ -1,6 +1,7 @@
 package com.maungedev.data.source.remote.service
 
 import android.net.Uri
+import android.util.Log
 import com.maungedev.data.constant.FirebaseConstant
 import com.maungedev.data.source.remote.FirebaseResponse
 import com.maungedev.data.source.remote.response.CompetitionCategoryResponse

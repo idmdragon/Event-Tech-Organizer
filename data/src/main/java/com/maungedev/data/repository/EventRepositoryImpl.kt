@@ -6,7 +6,6 @@ import com.maungedev.data.helper.NetworkBoundRequest
 import com.maungedev.data.helper.NetworkBoundResource
 import com.maungedev.data.mapper.*
 import com.maungedev.data.source.local.LocalDataSource
-import com.maungedev.data.source.local.entity.UserEntity
 import com.maungedev.data.source.remote.FirebaseResponse
 import com.maungedev.data.source.remote.RemoteDataSource
 import com.maungedev.data.source.remote.response.CompetitionCategoryResponse
@@ -19,13 +18,9 @@ import com.maungedev.domain.model.Event
 import com.maungedev.domain.model.User
 import com.maungedev.domain.repository.EventRepository
 import com.maungedev.domain.utils.Resource
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.emitAll
 import kotlinx.coroutines.flow.flow
-import kotlinx.coroutines.launch
-import java.util.concurrent.Executors
 
 class EventRepositoryImpl(
     private val local: LocalDataSource,
@@ -47,7 +42,7 @@ class EventRepositoryImpl(
                 local.selectAllMyEvents().toListFlowModel()
 
             override fun shouldFetch(data: List<Event>?): Boolean =
-                true
+                data == null
 
             override suspend fun createCall(): Flow<FirebaseResponse<List<EventResponse>>> =
                 remote.getMyEvents(ids)
@@ -65,7 +60,7 @@ class EventRepositoryImpl(
                 local.selectUser().toFlowModel()
 
             override fun shouldFetch(data: User?): Boolean =
-                true
+                 data == null
 
             override suspend fun createCall(): Flow<FirebaseResponse<UserResponse>> =
                 remote.getCurrentUser(id)
@@ -163,5 +158,27 @@ class EventRepositoryImpl(
 
         }.asFlow()
 
+    override fun refreshUser(): Flow<Resource<Unit>> =
+        object : NetworkBoundRequest<UserResponse>() {
 
+            override suspend fun createCall(): Flow<FirebaseResponse<UserResponse>> =
+                remote.getCurrentUser(getCurrentUserId())
+
+            override suspend fun saveCallResult(data: UserResponse) =
+                local.insertUser(data.toEntity())
+
+        }.asFlow()
+
+    override fun refreshAllEvent(ids: List<String>): Flow<Resource<Unit>> =
+        object : NetworkBoundRequest<List<EventResponse>>() {
+
+            override suspend fun createCall(): Flow<FirebaseResponse<List<EventResponse>>> =
+                remote.getMyEvents(ids)
+
+            override suspend fun saveCallResult(data: List<EventResponse>) {
+                local.clearEvent()
+                local.insertEvents(data.toListEntity())
+            }
+
+        }.asFlow()
 }

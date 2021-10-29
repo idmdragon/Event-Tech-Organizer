@@ -4,7 +4,7 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.provider.MediaStore
-import android.util.Log
+import android.text.InputType
 import android.widget.*
 import androidx.core.view.isVisible
 import com.bumptech.glide.Glide
@@ -129,10 +129,12 @@ class AddEventActivity : AppCompatActivity() {
                     addEvent()
                 }
             }
+            tilEventDate.editText?.inputType = InputType.TYPE_NULL
             tieEventDate.setOnClickListener {
                 setEventDate()
 
             }
+            tilEventTime.editText?.inputType = InputType.TYPE_NULL
             tieEventTime.setOnClickListener {
                 setEventTime()
             }
@@ -144,7 +146,6 @@ class AddEventActivity : AppCompatActivity() {
         with(binding) {
 
             viewModel.user.observe(this@AddEventActivity, { user ->
-            Log.d("TESSS","When add Event date -> ${ DateConverter.convertStringToMillis(tilEventDate.editText?.text.toString())}")
                 val event = Event(
                     "",
                     tilEventName.editText?.text.toString(),
@@ -271,7 +272,7 @@ class AddEventActivity : AppCompatActivity() {
         val pickerEventTimeBuilder =
             MaterialTimePicker
                 .Builder()
-                .setTimeFormat(TimeFormat.CLOCK_12H)
+                .setTimeFormat(TimeFormat.CLOCK_24H)
                 .build()
 
         pickerEventTimeBuilder.show(supportFragmentManager, "fragment_tag")

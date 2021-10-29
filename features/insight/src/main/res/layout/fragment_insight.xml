@@ -7,6 +7,15 @@
     android:background="@color/black"
     tools:context="com.maungedev.insight.ui.InsightFragment">
 
+    <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+        android:id="@+id/swipe_refresh"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
     <TextView
         android:id="@+id/tv_insight_title"
         style="@style/PoppinsSemiBold"
@@ -32,7 +41,7 @@
         <ImageView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:src="@drawable/ilu_empty"
+            android:src="@drawable/ilu_empty_list"
             android:contentDescription="@string/cd_ilu_empty" />
         <TextView
             android:layout_width="wrap_content"
@@ -205,4 +214,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>
