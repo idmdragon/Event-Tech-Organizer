@@ -11,9 +11,7 @@ import com.google.android.material.snackbar.Snackbar
 import com.maungedev.authentication.R
 import com.maungedev.authentication.databinding.FragmentLoginBinding
 import com.maungedev.authentication.di.authModule
-import com.maungedev.authentication.ui.register.RegisterViewModel
 import com.maungedev.authentication.ui.register.RegisterFragment
-import com.maungedev.authentication.ui.reset_password.ResetPasswordActivity
 import com.maungedev.domain.utils.Resource
 import com.maungedev.eventtechorganizer.main.MainActivity
 import org.koin.core.context.loadKoinModules

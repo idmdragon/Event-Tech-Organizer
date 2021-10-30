@@ -13,7 +13,9 @@ import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.google.android.material.snackbar.Snackbar
 import com.maungedev.domain.model.User
 import com.maungedev.domain.utils.Resource
+import com.maungedev.eventtechorganizer.constant.PageNameConstant.ABOUT_PAGE
 import com.maungedev.eventtechorganizer.constant.PageNameConstant.AUTHENTICATION_PAGE
+import com.maungedev.eventtechorganizer.constant.PageNameConstant.RESET_PASSWORD_PAGE
 import com.maungedev.eventtechorganizer.constant.USERNAME
 import com.maungedev.profile.R
 import com.maungedev.profile.databinding.FragmentProfileBinding
@@ -60,6 +62,24 @@ class ProfileFragment : Fragment() {
                                 startActivity(Intent(requireContext(),EditUsernameActivity::class.java).putExtra(
                                     USERNAME,user.username))
                             }
+                        }
+
+                        tvEditPassword.setOnClickListener {
+                            startActivity(
+                                Intent(
+                                    requireContext(),
+                                    Class.forName(RESET_PASSWORD_PAGE)
+                                )
+                            )
+                        }
+
+                        tvAbout.setOnClickListener {
+                            startActivity(
+                                Intent(
+                                    requireContext(),
+                                    Class.forName(ABOUT_PAGE)
+                                )
+                            )
                         }
                     }
                 }

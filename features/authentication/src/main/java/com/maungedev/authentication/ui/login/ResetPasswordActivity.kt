@@ -1,14 +1,11 @@
-package com.maungedev.authentication.ui.reset_password
+package com.maungedev.authentication.ui.login
 
-import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
 import androidx.core.view.isVisible
 import com.google.android.material.snackbar.Snackbar
 import com.maungedev.authentication.databinding.ActivityResetPasswordBinding
 import com.maungedev.authentication.di.authModule
-import com.maungedev.authentication.ui.login.LoginViewModel
 import com.maungedev.domain.utils.Resource
 import org.koin.android.viewmodel.ext.android.viewModel
 import org.koin.core.context.loadKoinModules
