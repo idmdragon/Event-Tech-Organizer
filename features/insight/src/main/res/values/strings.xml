@@ -6,4 +6,5 @@
     <string name="subtitle_total_event_seen">Jumlah total event yang dilihat</string>
     <string name="subtitle_total_event_opened">Jumlah total link pendaftaran dibuka</string>
     <string name="subtitle_total_event">Jumlah eventmu</string>
+    <string name="_0">0</string>
 </resources>

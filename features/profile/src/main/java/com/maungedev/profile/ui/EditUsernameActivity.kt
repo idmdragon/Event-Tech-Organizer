@@ -5,7 +5,7 @@ import android.os.Bundle
 import androidx.core.view.isVisible
 import com.google.android.material.snackbar.Snackbar
 import com.maungedev.domain.utils.Resource
-import com.maungedev.eventtechorganizer.constant.USERNAME
+import com.maungedev.eventtechorganizer.constant.ExtraNameConstant.USERNAME
 import com.maungedev.profile.databinding.ActivityEditUsernameBinding
 import com.maungedev.profile.di.profileModule
 import org.koin.android.viewmodel.ext.android.viewModel

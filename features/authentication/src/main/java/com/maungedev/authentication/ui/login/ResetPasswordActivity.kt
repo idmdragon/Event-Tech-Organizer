@@ -7,6 +7,7 @@ import com.google.android.material.snackbar.Snackbar
 import com.maungedev.authentication.databinding.ActivityResetPasswordBinding
 import com.maungedev.authentication.di.authModule
 import com.maungedev.domain.utils.Resource
+import com.maungedev.eventtechorganizer.constant.ExtraNameConstant
 import org.koin.android.viewmodel.ext.android.viewModel
 import org.koin.core.context.loadKoinModules
 
@@ -20,9 +21,18 @@ class ResetPasswordActivity : AppCompatActivity() {
         setContentView(binding.root)
         loadKoinModules(authModule)
 
+        val emailFromIntentExtras = intent.getStringExtra(ExtraNameConstant.EMAIL)
+
+        if (emailFromIntentExtras!=null){
+            binding.tilResetPassword.editText?.setText(emailFromIntentExtras)
+        }
+
         binding.btnResetPassword.setOnClickListener {
             viewModel.resetPassword(binding.tilResetPassword.editText?.text.toString())
                 .observe(this, ::resetPasswordResponse)
+        }
+        binding.btnBack.setOnClickListener {
+            onBackPressed()
         }
 
     }
@@ -31,16 +41,14 @@ class ResetPasswordActivity : AppCompatActivity() {
         when (resource) {
             is Resource.Success -> {
                 loadingState(false)
+            }
+            is Resource.Loading -> {
                 Snackbar.make(
                     binding.root,
                     "Reset Password telah dikirimkan ke email milikmu",
                     Snackbar.LENGTH_LONG
                 )
                     .show()
-
-            }
-            is Resource.Loading -> {
-                loadingState(true)
             }
 
             is Resource.Error -> {

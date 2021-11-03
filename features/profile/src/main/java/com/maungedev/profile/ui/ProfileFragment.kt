@@ -9,15 +9,16 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import android.widget.TextView
+import androidx.core.view.isVisible
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.google.android.material.snackbar.Snackbar
 import com.maungedev.domain.model.User
 import com.maungedev.domain.utils.Resource
+import com.maungedev.eventtechorganizer.constant.ExtraNameConstant.EMAIL
+import com.maungedev.eventtechorganizer.constant.ExtraNameConstant.USERNAME
 import com.maungedev.eventtechorganizer.constant.PageNameConstant.ABOUT_PAGE
 import com.maungedev.eventtechorganizer.constant.PageNameConstant.AUTHENTICATION_PAGE
 import com.maungedev.eventtechorganizer.constant.PageNameConstant.RESET_PASSWORD_PAGE
-import com.maungedev.eventtechorganizer.constant.USERNAME
-import com.maungedev.profile.R
 import com.maungedev.profile.databinding.FragmentProfileBinding
 import com.maungedev.profile.di.profileModule
 import org.koin.android.viewmodel.ext.android.viewModel
@@ -55,22 +56,26 @@ class ProfileFragment : Fragment() {
                         if (user != null) {
                             tvEmail.text = user.email
                             tvUsername.text = user.username
-                        }
 
-                        tvEditUsername.setOnClickListener {
-                            if (user != null) {
-                                startActivity(Intent(requireContext(),EditUsernameActivity::class.java).putExtra(
-                                    USERNAME,user.username))
-                            }
-                        }
-
-                        tvEditPassword.setOnClickListener {
-                            startActivity(
-                                Intent(
-                                    requireContext(),
-                                    Class.forName(RESET_PASSWORD_PAGE)
+                            tvEditUsername.setOnClickListener {
+                                startActivity(
+                                    Intent(
+                                        requireContext(),
+                                        EditUsernameActivity::class.java
+                                    ).putExtra(
+                                        USERNAME, user.username
+                                    )
                                 )
-                            )
+                            }
+
+                            tvEditPassword.setOnClickListener {
+                                startActivity(
+                                    Intent(
+                                        requireContext(),
+                                        Class.forName(RESET_PASSWORD_PAGE)
+                                    ).putExtra(EMAIL, user.email)
+                                )
+                            }
                         }
 
                         tvAbout.setOnClickListener {
@@ -98,14 +103,19 @@ class ProfileFragment : Fragment() {
         }
     }
 
-    private fun loadingState(b: Boolean) {
-
+    private fun loadingState(state: Boolean) {
+        binding.progressBar.isVisible = state
     }
 
     private fun logout() {
         binding.tvLogout.setOnClickListener {
             viewModel.logout()
-            requireContext().startActivity(Intent(requireContext(), Class.forName(AUTHENTICATION_PAGE))).also {
+            requireContext().startActivity(
+                Intent(
+                    requireContext(),
+                    Class.forName(AUTHENTICATION_PAGE)
+                )
+            ).also {
                 activity?.finishAffinity()
             }
         }

@@ -10,5 +10,6 @@
     <string name="text_about">Tentang Aplikasi</string>
     <string name="desc_logout">Apakah kamu yakin akan keluar dari aplikasi?</string>
     <string name="desc_about">EventTech Organizer merupakan platform untuk mempublikasikan event dibidang IT yang akan dapat dilihat para pencari event pada aplikasi EventTech</string>
+    <string name="text_logout">Keluar</string>
 
 </resources>
